@@ -193,7 +193,7 @@
         </div>
         <div class="field" style="display:flex; flex-wrap:wrap; align-items:center; gap:12px;">
           <button class="btn primary" type="submit">Submit intake</button>
-          <span class="hint">This opens a new email in a <strong>new tab</strong> (Gmail if available). If your browser blocks pop‑ups or no handler is set, it will fall back to your email app and copy your answers for you.</span>
+          <span class="hint">This will open your email app; if it doesn't, your answers will be copied so you can paste into an email to <strong>steffdjones@gmail.com</strong>.</span>
         </div>
       </form>
     </section>
@@ -241,7 +241,7 @@
       }catch(err){}
     });
 
-    // Intake form → open Gmail in new tab with full message; fallback to mailto; show thank you
+    // Intake form → compose email via mailto; copy to clipboard; show thank you
     (function(){
       var f = document.getElementById('intakeForm');
       if(!f) return;
@@ -255,16 +255,6 @@
         var avail = (v.get('availability')||'').trim();
 
         var subject = 'Tutoring Intake — ' + (name||'Student');
-        var lines = [
-          'Tutoring Intake',
-          'Name: ' + name,
-          'Grade/Level: ' + grade,
-          'Desired Topic: ' + topic,
-          'Goals/Deadlines: ' + goals,
-          'Availability/Timezone: ' + avail
-        ].join('
-');
-
         var friendly = [
           'Hi Steff,',
           '',
@@ -280,21 +270,21 @@
           '',
           'Best,',
           (name||'')
-        ].join('
-');
+        ].join('\n');
 
         var email = 'steffdjones@gmail.com';
-        var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(email) + '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(friendly);
         var mailto = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(friendly);
+        try { window.location.href = mailto; } catch(e) {}
 
-        // Try opening Gmail compose in a new tab; fall back to mailto if blocked
-        var opened = null;
-        try { opened = window.open(gmailUrl, '_blank'); } catch(e) {}
-        if(!opened){
-          try { window.location.href = mailto; } catch(e) {}
-        }
-
-        // Copy a plain-text summary as a safety net
+        // Always copy a plain-text summary in case mail app isn't configured
+        var lines = [
+          'Tutoring Intake',
+          'Name: ' + name,
+          'Grade/Level: ' + grade,
+          'Desired Topic: ' + topic,
+          'Goals/Deadlines: ' + goals,
+          'Availability/Timezone: ' + avail
+        ].join('\n');
         if(navigator.clipboard){ navigator.clipboard.writeText(lines); }
 
         var t = document.getElementById('thankyou-note'); if(t){ t.style.display='block'; t.scrollIntoView({behavior:'smooth', block:'start'}); }
