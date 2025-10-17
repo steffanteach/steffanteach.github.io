@@ -3,123 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome | Teaching with Steffan Jones</title>
-  <meta name="description" content="Tutoring, college guidance, and athlete training resources by Steff Jones." />
-  <meta property="og:title" content="Welcome | Teaching with Steff Jones" />
-  <meta property="og:description" content="Choose tutoring, college guidance, or athlete training with Steff Jones." />
-  <meta name="theme-color" content="#111111" />
-  <style>
-    :root{
-      --bg:#0c0c0f;
-      --text:#f6f6f6;
-      --muted:#b0b0b0;
-      --accent:#e0112b;
-      --card:#141419;
-      --silver:#c0c0c0;
-      --radius:18px;
-      --shadow-lg:0 20px 40px rgba(0,0,0,.35);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(192,192,192,.12), transparent 60%),
-                  radial-gradient(800px 600px at -10% 100%, rgba(192,192,192,.08), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      display:grid; place-items:center;
-      padding:32px;
-    }
-
-    .wrap{ width:min(1100px,100%); }
-
-    header{ text-align:center; margin-bottom:32px; }
-
-    h1{ margin:0; font-size:clamp(28px,5vw,48px); font-weight:800; color:var(--text); text-shadow:0 0 10px rgba(192,192,192,.2); }
-
-    .subtitle{ margin-top:10px; color:var(--muted); font-size:clamp(14px,2.2vw,18px); }
-
-    .about{ max-width:750px; margin:24px auto; text-align:center; color:var(--muted); line-height:1.6; font-size:16px; border-top:1px solid rgba(192,192,192,.2); border-bottom:1px solid rgba(192,192,192,.2); padding:20px 0; }
-
-    .grid{ margin-top:28px; display:grid; gap:18px; grid-template-columns:repeat(1,minmax(0,1fr)); }
-    @media(min-width:680px){ .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
-
-    a.card{
-      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)),var(--card);
-      border-radius:var(--radius);
-      padding:22px 22px 24px;
-      text-decoration:none; color:inherit; position:relative;
-      box-shadow:var(--shadow-lg);
-      border:1px solid rgba(192,192,192,.2);
-      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
-    }
-
-    .card::after{
-      content:""; position:absolute; inset:-2px; border-radius:calc(var(--radius) + 2px);
-      background:radial-gradient(60% 60% at 50% 0%, rgba(192,192,192,.45), transparent 70%),
-                 radial-gradient(80% 80% at 50% 100%, rgba(192,192,192,.3), transparent 70%);
-      filter:blur(14px); opacity:0; transition:opacity .25s ease; z-index:-1;
-    }
-
-    a.card:hover{
-      transform:translateY(-2px) scale(1.02);
-      border-color:rgba(192,192,192,.5);
-      box-shadow:0 0 20px rgba(192,192,192,.3), var(--shadow-lg);
-      background:linear-gradient(180deg,rgba(224,17,43,.05),rgba(255,255,255,.02)),var(--card);
-    }
-    a.card:hover::after{ opacity:.8; }
-
-    .badge{ display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--text); font-size:13px;
-      background:rgba(192,192,192,.14); border:1px solid rgba(192,192,192,.45); padding:6px 10px; border-radius:999px; margin-bottom:14px; }
-    .badge .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px rgba(224,17,43,.8), 0 0 25px rgba(224,17,43,.35); }
-
-    .card h2{ margin:6px 0 6px; font-size:22px; color:var(--text); text-shadow:0 0 6px rgba(192,192,192,.15); }
-    .card p{ margin:0; color:var(--muted); line-height:1.5; font-size:15px; }
-
-    footer{ text-align:center; margin-top:28px; color:var(--muted); font-size:13px; border-top:1px solid rgba(192,192,192,.15); padding-top:12px; }
-  </style>
+  <title>Welcome | Steff Jones</title>
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
   <main class="wrap" role="main">
     <header>
       <h1>Welcome</h1>
-      <p class="subtitle">Tutoring, guidance, and world-class training</p>
+      <p class="subtitle">Teaching, guidance, and training with purpose.</p>
     </header>
 
-    <section class="about">
-      <p>Hi, I’m <strong>Steffan Jones</strong> — I'm an engineer, educator, and NCAA Division I athlete with a passion for helping others reach their potential. I have an engineering degree from Harvard, and have taught a wide array of subjects, from math and science, to history and writing. I have also trained with world-class coaches from all over the globe, and am eager to share what I have learned. Click on the box that suits your needs most, and let's schedule a time to meet!</p>
+    <section class="about" style="max-width:750px;margin:24px auto;text-align:center;color:var(--muted);line-height:1.6;font-size:16px;">
+      <p>Hi, I’m <strong>Steff Jones</strong> — an engineer, educator, and NCAA Division I athlete. I teach academics, guide students through college applications, and coach athletes with smart, structured plans.</p>
     </section>
 
-    <h2 style="text-align:center; margin-top:40px; font-weight:700; color:var(--silver); text-shadow:0 0 8px rgba(192,192,192,.3);">Choose where you want to go</h2>
+    <section class="logos" aria-label="Credentials and affiliations">
+      <div class="logo-track">
+        <img src="assets/harvard.svg" alt="Harvard University" loading="lazy" />
+        <img src="assets/welsh-athletics.svg" alt="Welsh Athletics" loading="lazy" />
+        <img src="assets/loughborough.svg" alt="Loughborough College" loading="lazy" />
+      </div>
+    </section>
 
+    <h2 class="section-title">Choose where you want to go</h2>
     <section class="grid" aria-label="Primary navigation">
-      <a class="card" href="/tutoring/">
+      <a class="card" href="tutoring/">
         <span class="badge"><span class="dot"></span> Tutoring</span>
         <h2>Academic Tutoring</h2>
-        <p>Targeted help in math, science, writing, and more. Clear goals, thoughtful explanations, measurable progress.</p>
+        <p>Clear explanations, targeted practice, and measurable progress.</p>
       </a>
-
-      <a class="card" href="/college/">
+      <a class="card" href="college/">
         <span class="badge"><span class="dot"></span> College</span>
         <h2>College Guidance</h2>
-        <p>Applications, essays, timelines, and strategy — from building a school list to hitting submit with confidence.</p>
+        <p>School list strategy, essays, timelines, and accountability.</p>
       </a>
-
-      <a class="card" href="/athletes/">
+      <a class="card" href="athletes/">
         <span class="badge"><span class="dot"></span> Training</span>
         <h2>Athlete Training</h2>
-        <p>Programs for speed, power, and resilience. Smart planning for track & field and overall performance.</p>
+        <p>Strength, speed, and sport-specific plans with follow-ups.</p>
       </a>
     </section>
 
     <footer>
-      <p>&copy; <span id="year"></span> Steff Jones. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Steff Jones.</p>
     </footer>
   </main>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
