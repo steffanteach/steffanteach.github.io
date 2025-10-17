@@ -3,10 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome | Teaching with Steffan Jones</title>
-  <meta name="description" content="Tutoring, college guidance, and athlete training resources by Steff Jones." />
-  <meta property="og:title" content="Welcome | Teaching with Steff Jones" />
-  <meta property="og:description" content="Choose tutoring, college guidance, or athlete training with Steff Jones." />
+  <title>Athlete Training | Steff Jones</title>
+  <meta name="description" content="Lift coaching, track training, and sprint training for athletes. 1-on-1 consults, tailored monthly plans, and follow-ups." />
   <meta name="theme-color" content="#111111" />
   <style>
     :root{
@@ -23,103 +21,199 @@
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
-      margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background: radial-gradient(1200px 800px at 80% -10%, rgba(192,192,192,.12), transparent 60%),
                   radial-gradient(800px 600px at -10% 100%, rgba(192,192,192,.08), transparent 60%),
                   var(--bg);
       color:var(--text);
-      display:grid; place-items:center;
-      padding:32px;
     }
 
-    .wrap{ width:min(1100px,100%); }
+    .wrap{ width:min(1100px, 100%); margin: 0 auto; padding: 28px 20px 40px; }
 
-    header{ text-align:center; margin-bottom:32px; }
+    header{ text-align:center; padding: 16px 0 8px; }
+    .eyebrow{ color:var(--silver); letter-spacing:.18em; text-transform:uppercase; font-size:12px; }
+    h1{ margin:8px 0 6px; font-size: clamp(28px, 5vw, 46px); font-weight:800; color:var(--text); text-shadow:0 0 10px rgba(192,192,192,.2); }
+    .subtitle{ margin:0 auto; color:var(--muted); max-width:820px; line-height:1.6; }
 
-    h1{ margin:0; font-size:clamp(28px,5vw,48px); font-weight:800; color:var(--text); text-shadow:0 0 10px rgba(192,192,192,.2); }
+    .cta-bar{ display:flex; gap:12px; justify-content:center; margin-top:16px; flex-wrap:wrap; }
+    .btn{ display:inline-flex; align-items:center; gap:10px; border-radius:999px; padding: 12px 18px; text-decoration:none; font-weight:700; border:1px solid rgba(192,192,192,.35); box-shadow: var(--shadow-lg); transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
+    .btn.primary{ background: linear-gradient(180deg, rgba(224,17,43,.14), rgba(255,255,255,.02)); color:var(--text); }
+    .btn.secondary{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.0)); color:var(--text); }
+    .btn:hover{ transform: translateY(-1px) scale(1.02); border-color: rgba(192,192,192,.6); box-shadow: 0 0 18px rgba(192,192,192,.28), var(--shadow-lg); }
 
-    .subtitle{ margin-top:10px; color:var(--muted); font-size:clamp(14px,2.2vw,18px); }
+    /* Cards grid */
+    .grid{ margin-top:28px; display:grid; gap:18px; grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    @media (min-width: 760px){ .grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
 
-    .about{ max-width:750px; margin:24px auto; text-align:center; color:var(--muted); line-height:1.6; font-size:16px; border-top:1px solid rgba(192,192,192,.2); border-bottom:1px solid rgba(192,192,192,.2); padding:20px 0; }
+    .card{ position:relative; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 20px 20px 22px; box-shadow: var(--shadow-lg); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease; }
+    .card::after{ content:""; position:absolute; inset:-2px; border-radius: calc(var(--radius) + 2px); background: radial-gradient(60% 60% at 50% 0%, rgba(192,192,192,.45), transparent 70%), radial-gradient(80% 80% at 50% 100%, rgba(192,192,192,.3), transparent 70%); filter: blur(14px); opacity:0; transition: opacity .25s ease; z-index:-1; }
+    .card:hover{ transform: translateY(-2px) scale(1.02); border-color: rgba(192,192,192,.45); background: linear-gradient(180deg, rgba(224,17,43,.05), rgba(255,255,255,.02)), var(--card); box-shadow: 0 0 20px rgba(192,192,192,.3), var(--shadow-lg); }
+    .card:hover::after{ opacity:.85; }
+    .badge{ display:inline-flex; align-items:center; gap:8px; font-weight:700; color: var(--text); font-size: 12px; background: rgba(192,192,192,.14); border:1px solid rgba(192,192,192,.45); padding: 6px 10px; border-radius: 999px; margin-bottom: 12px; }
+    .dot{ width:8px; height:8px; border-radius:50%; background: var(--accent); box-shadow: 0 0 10px rgba(224,17,43,.8), 0 0 25px rgba(224,17,43,.35); }
+    .card h3{ margin:6px 0 8px; font-size: 20px; color: var(--text); text-shadow: 0 0 6px rgba(192,192,192,.15); }
+    .card p{ margin:0; color: var(--muted); line-height:1.55; font-size: 15px; }
+    .card ul{ margin: 10px 0 0 18px; color: var(--muted); }
 
-    .grid{ margin-top:28px; display:grid; gap:18px; grid-template-columns:repeat(1,minmax(0,1fr)); }
-    @media(min-width:680px){ .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    /* Section titles */
+    .section-title{ text-align:center; margin: 40px 0 8px; font-weight:800; color: var(--silver); text-shadow: 0 0 8px rgba(192,192,192,.3); font-size: clamp(18px, 3.4vw, 26px); }
 
-    a.card{
-      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)),var(--card);
-      border-radius:var(--radius);
-      padding:22px 22px 24px;
-      text-decoration:none; color:inherit; position:relative;
-      box-shadow:var(--shadow-lg);
-      border:1px solid rgba(192,192,192,.2);
-      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
-    }
+    /* Process */
+    .process{ display:grid; gap:16px; grid-template-columns: repeat(1, minmax(0,1fr)); margin-top: 14px; }
+    @media (min-width: 760px){ .process{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    .step{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-lg); }
+    .step .kicker{ font-size:12px; color: var(--silver); letter-spacing:.14em; text-transform:uppercase; }
+    .step h4{ margin:6px 0; font-size:18px; }
+    .step p{ margin:0; color: var(--muted); line-height:1.6; }
 
-    .card::after{
-      content:""; position:absolute; inset:-2px; border-radius:calc(var(--radius) + 2px);
-      background:radial-gradient(60% 60% at 50% 0%, rgba(192,192,192,.45), transparent 70%),
-                 radial-gradient(80% 80% at 50% 100%, rgba(192,192,192,.3), transparent 70%);
-      filter:blur(14px); opacity:0; transition:opacity .25s ease; z-index:-1;
-    }
+    /* Embed containers */
+    .embed{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 12px; box-shadow: var(--shadow-lg); }
+    .embed iframe{ width:100%; border:0; height: 760px; border-radius: calc(var(--radius) - 6px); }
 
-    a.card:hover{
-      transform:translateY(-2px) scale(1.02);
-      border-color:rgba(192,192,192,.5);
-      box-shadow:0 0 20px rgba(192,192,192,.3), var(--shadow-lg);
-      background:linear-gradient(180deg,rgba(224,17,43,.05),rgba(255,255,255,.02)),var(--card);
-    }
-    a.card:hover::after{ opacity:.8; }
+    details{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow-lg); }
+    summary{ cursor:pointer; font-weight:700; }
+    details + details{ margin-top:10px; }
 
-    .badge{ display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--text); font-size:13px;
-      background:rgba(192,192,192,.14); border:1px solid rgba(192,192,192,.45); padding:6px 10px; border-radius:999px; margin-bottom:14px; }
-    .badge .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px rgba(224,17,43,.8), 0 0 25px rgba(224,17,43,.35); }
-
-    .card h2{ margin:6px 0 6px; font-size:22px; color:var(--text); text-shadow:0 0 6px rgba(192,192,192,.15); }
-    .card p{ margin:0; color:var(--muted); line-height:1.5; font-size:15px; }
-
-    footer{ text-align:center; margin-top:28px; color:var(--muted); font-size:13px; border-top:1px solid rgba(192,192,192,.15); padding-top:12px; }
+    footer{ text-align:center; margin: 36px 0 12px; color: var(--muted); font-size: 13px; border-top: 1px solid rgba(192,192,192,.15); padding-top: 12px; }
   </style>
+  <!-- Calendly embed -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
   <main class="wrap" role="main">
     <header>
-      <h1>Welcome</h1>
-      <p class="subtitle">Tutoring, guidance, and world-class training</p>
+      <div class="eyebrow">Athlete Training</div>
+      <h1>Speed. Strength. Structure.</h1>
+      <p class="subtitle">I’m <strong>Steff Jones</strong>, an NCAA Division I 400m sprinter and coach. I help athletes get faster and stronger with tailored, evidence‑based programming — whether you’re a track athlete or you need sprint speed for another sport. We’ll meet 1‑on‑1 on Zoom, align on goals, and build a monthly plan that actually fits your life.</p>
+      <div class="cta-bar">
+        <a class="btn primary" href="#book">Book a 1‑on‑1 Consult</a>
+        <a class="btn secondary" href="/" aria-label="Back to home">← Back to Home</a>
+      </div>
     </header>
 
-    <section class="about">
-      <p>Hi, I’m <strong>Steffan Jones</strong> — I'm an engineer, educator, and NCAA Division I athlete with a passion for helping others reach their potential. I have an engineering degree from Harvard, and have taught a wide array of subjects, from math and science, to history and writing. I have also trained with world-class coaches from all over the globe, and am eager to share what I have learned. Click on the box that suits your needs most, and let's schedule a time to meet!</p>
+    <!-- Offerings -->
+    <section aria-label="Training offerings" class="grid">
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Lift Coaching</span>
+        <h3>Strength & Power</h3>
+        <p>Customized lifting cycles to build force, rate of force development, and durability. Technique feedback, progressions, and weekly checks.</p>
+        <ul>
+          <li>Block periodization matched to your season</li>
+          <li>Movement quality & cueing (video feedback optional)</li>
+          <li>Accessory work for injury prevention</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Track Training</span>
+        <h3>Sprint Mechanics & Speed</h3>
+        <p>Event‑specific plans for 60–400m with acceleration, max‑V, and speed endurance workouts — plus recovery and mobility built‑in.</p>
+        <ul>
+          <li>Weekly speed, tempo, and technical sessions</li>
+          <li>Starts, posture, and contact time focus</li>
+          <li>Measurable targets (splits, volumes, RPE)</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Sprint Training for Other Sports</span>
+        <h3>Game‑Speed Acceleration</h3>
+        <p>For football, soccer, lacrosse, and more — translate sprint mechanics into shorter ground contact and sharper first steps.</p>
+        <ul>
+          <li>Short‑burst acceleration & COD emphasis</li>
+          <li>Power + plyometrics integrated with practice</li>
+          <li>Field‑ready warm‑ups & micro‑doses</li>
+        </ul>
+      </article>
     </section>
 
-    <h2 style="text-align:center; margin-top:40px; font-weight:700; color:var(--silver); text-shadow:0 0 8px rgba(192,192,192,.3);">Choose where you want to go</h2>
+    <!-- Process -->
+    <h2 class="section-title">How it works</h2>
+    <section class="process" aria-label="Process">
+      <div class="step">
+        <div class="kicker">Step 1</div>
+        <h4>1‑on‑1 Zoom consult</h4>
+        <p>We’ll discuss goals, training history, schedule, access to equipment, and any constraints. I’ll review any recent performances or videos you want to share.</p>
+      </div>
+      <div class="step">
+        <div class="kicker">Step 2</div>
+        <h4>Tailored monthly plan</h4>
+        <p>You’ll receive a 4‑week training plan matched to your needs and calendar: workouts, lifts, mobility, and recovery with clear instructions and targets.</p>
+      </div>
+      <div class="step">
+        <div class="kicker">Step 3</div>
+        <h4>Follow‑ups included</h4>
+        <p>We’ll check in weekly by message and do a Zoom follow‑up to review progress, adjust loads, and keep you on track.</p>
+      </div>
+    </section>
 
-    <section class="grid" aria-label="Primary navigation">
-      <a class="card" href="/tutoring/">
-        <span class="badge"><span class="dot"></span> Tutoring</span>
-        <h2>Academic Tutoring</h2>
-        <p>Targeted help in math, science, writing, and more. Clear goals, thoughtful explanations, measurable progress.</p>
-      </a>
+    <!-- Booking & Intake -->
+    <h2 id="book" class="section-title">Schedule & Intake</h2>
+    <section class="embed" aria-label="Calendly inline scheduler" style="margin-top:10px;">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/steffjonesfit/30-min-gym-program-consultation" style="min-width:320px;height:760px;"></div>
+      <noscript>
+        <p>Scheduling requires JavaScript. You can also <a href="https://calendly.com/steffjonesfit/30-min-gym-program-consultation" style="color:#fff; text-decoration:underline;">open Calendly in a new tab</a>.</p>
+      </noscript>
+    </section>
 
-      <a class="card" href="/college/">
-        <span class="badge"><span class="dot"></span> College</span>
-        <h2>College Guidance</h2>
-        <p>Applications, essays, timelines, and strategy — from building a school list to hitting submit with confidence.</p>
-      </a>
+    <div id="scheduled-note" class="embed" style="display:none; margin-top:12px;">
+      <p style="margin:0; color:var(--text); font-weight:700;">✅ Booked! Next step:</p>
+      <p style="margin:.4rem 0 0; color:var(--muted);">Please complete the intake form below so I can tailor your plan before our call.</p>
+    </div>
 
-      <a class="card" href="/athletes/">
-        <span class="badge"><span class="dot"></span> Training</span>
-        <h2>Athlete Training</h2>
-        <p>Programs for speed, power, and resilience. Smart planning for track & field and overall performance.</p>
-      </a>
+    <p style="text-align:center; margin:14px 0 0; color:var(--muted);">Questions before scheduling? <a href="mailto:steffdjones@gmail.com" style="color:#fff; text-decoration:underline;">Email me</a>.</p>
+
+    <h2 class="section-title" id="intake" style="margin-top:18px;">Training Intake Form</h2>
+    <section class="embed" aria-label="Intake form">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesznmN29C_61NNdbq3drNU5tl0qa53Gu_aJnjw2kImUjEBcA/viewform?embedded=true" title="Training Intake Form">Loading…</iframe>
+    </section>
+
+    <!-- FAQs -->
+    <h2 id="faq" class="section-title">FAQs</h2>
+    <section aria-label="FAQ" style="max-width:900px; margin: 10px auto 0; display:grid; gap:10px;">
+      <details>
+        <summary>Do you coach remotely?</summary>
+        <p>Yes — consults and follow‑ups are via Zoom. Plans are delivered in shareable documents with clear progressions and targets.</p>
+      </details>
+      <details>
+        <summary>What equipment do I need?</summary>
+        <p>We’ll build around what you have — from full gym access to minimal equipment. I’ll include alternatives and bodyweight options where needed.</p>
+      </details>
+      <details>
+        <summary>Can this fit around my season?</summary>
+        <p>Absolutely. We’ll align the plan with off‑season, pre‑season, or in‑season demands so you can improve without excess fatigue.</p>
+      </details>
+      <details>
+        <summary>How do follow‑ups work?</summary>
+        <p>Weekly check‑ins by message, plus a Zoom review to adjust the plan. You’re never stuck guessing the next step.</p>
+      </details>
     </section>
 
     <footer>
-      <p>&copy; <span id="year"></span> Steff Jones. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Steff Jones. <a href="/" style="color:inherit;">Home</a></p>
     </footer>
   </main>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    // Show a success note after a Calendly event is scheduled and scroll to intake
+    window.addEventListener('message', function(e){
+      try{
+        if(!e || !e.data) return;
+        if(e.origin && e.origin.indexOf('calendly.com') === -1) return;
+        var data = e.data;
+        if(typeof data === 'string'){
+          try{ data = JSON.parse(data); }catch(err){}
+        }
+        if(data && data.event === 'calendly.event_scheduled'){
+          var note = document.getElementById('scheduled-note');
+          if(note){ note.style.display = 'block'; }
+          var intake = document.getElementById('intake');
+          if(intake){ intake.scrollIntoView({behavior:'smooth', block:'start'}); }
+        }
+      }catch(err){ /* ignore */ }
+    });
   </script>
 </body>
 </html>
