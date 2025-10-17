@@ -15,6 +15,7 @@
       --muted:#b0b0b0;
       --accent:#e0112b;
       --card:#141419;
+      --silver:#c0c0c0;
       --radius:18px;
       --shadow-lg:0 20px 40px rgba(0,0,0,.35);
     }
@@ -23,8 +24,8 @@
     html,body{ height:100%; }
     body{
       margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(224,17,43,.12), transparent 60%),
-                  radial-gradient(800px 600px at -10% 100%, rgba(224,17,43,.08), transparent 60%),
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(192,192,192,.12), transparent 60%),
+                  radial-gradient(800px 600px at -10% 100%, rgba(192,192,192,.08), transparent 60%),
                   var(--bg);
       color:var(--text);
       display:grid; place-items:center;
@@ -35,11 +36,11 @@
 
     header{ text-align:center; margin-bottom:32px; }
 
-    h1{ margin:0; font-size:clamp(28px,5vw,48px); font-weight:800; }
+    h1{ margin:0; font-size:clamp(28px,5vw,48px); font-weight:800; color:var(--text); text-shadow:0 0 10px rgba(192,192,192,.2); }
 
     .subtitle{ margin-top:10px; color:var(--muted); font-size:clamp(14px,2.2vw,18px); }
 
-    .about{ max-width:750px; margin:24px auto; text-align:center; color:var(--muted); line-height:1.6; font-size:16px; }
+    .about{ max-width:750px; margin:24px auto; text-align:center; color:var(--muted); line-height:1.6; font-size:16px; border-top:1px solid rgba(192,192,192,.2); border-bottom:1px solid rgba(192,192,192,.2); padding:20px 0; }
 
     .grid{ margin-top:28px; display:grid; gap:18px; grid-template-columns:repeat(1,minmax(0,1fr)); }
     @media(min-width:680px){ .grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
@@ -50,28 +51,33 @@
       padding:22px 22px 24px;
       text-decoration:none; color:inherit; position:relative;
       box-shadow:var(--shadow-lg);
-      border:1px solid rgba(255,255,255,.06);
-      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      border:1px solid rgba(192,192,192,.2);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
     }
 
     .card::after{
       content:""; position:absolute; inset:-2px; border-radius:calc(var(--radius) + 2px);
-      background:radial-gradient(60% 60% at 50% 0%, rgba(224,17,43,.45), transparent 70%),
-                 radial-gradient(80% 80% at 50% 100%, rgba(224,17,43,.30), transparent 70%);
+      background:radial-gradient(60% 60% at 50% 0%, rgba(192,192,192,.45), transparent 70%),
+                 radial-gradient(80% 80% at 50% 100%, rgba(192,192,192,.3), transparent 70%);
       filter:blur(14px); opacity:0; transition:opacity .25s ease; z-index:-1;
     }
 
-    a.card:hover{ transform:translateY(-2px) scale(1.02); border-color:rgba(224,17,43,.45); }
-    a.card:hover::after{ opacity:.9; }
+    a.card:hover{
+      transform:translateY(-2px) scale(1.02);
+      border-color:rgba(192,192,192,.5);
+      box-shadow:0 0 20px rgba(192,192,192,.3), var(--shadow-lg);
+      background:linear-gradient(180deg,rgba(224,17,43,.05),rgba(255,255,255,.02)),var(--card);
+    }
+    a.card:hover::after{ opacity:.8; }
 
     .badge{ display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--text); font-size:13px;
-      background:rgba(224,17,43,.14); border:1px solid rgba(224,17,43,.45); padding:6px 10px; border-radius:999px; margin-bottom:14px; }
+      background:rgba(192,192,192,.14); border:1px solid rgba(192,192,192,.45); padding:6px 10px; border-radius:999px; margin-bottom:14px; }
     .badge .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px rgba(224,17,43,.8), 0 0 25px rgba(224,17,43,.35); }
 
-    .card h2{ margin:6px 0 6px; font-size:22px; }
+    .card h2{ margin:6px 0 6px; font-size:22px; color:var(--text); text-shadow:0 0 6px rgba(192,192,192,.15); }
     .card p{ margin:0; color:var(--muted); line-height:1.5; font-size:15px; }
 
-    footer{ text-align:center; margin-top:28px; color:var(--muted); font-size:13px; }
+    footer{ text-align:center; margin-top:28px; color:var(--muted); font-size:13px; border-top:1px solid rgba(192,192,192,.15); padding-top:12px; }
   </style>
 </head>
 <body>
@@ -85,7 +91,7 @@
       <p>Hi, I’m <strong>Steff Jones</strong> — an engineer, educator, and NCAA Division I athlete with a passion for helping others reach their potential. I’ve taught academic subjects ranging from math and science to history and writing, helped students navigate the college admissions process, and trained athletes to perform at their best both physically and mentally. I believe in combining structure with empathy, effort with purpose, and always leading by example.</p>
     </section>
 
-    <h2 style="text-align:center; margin-top:40px; font-weight:700;">Choose where you want to go</h2>
+    <h2 style="text-align:center; margin-top:40px; font-weight:700; color:var(--silver); text-shadow:0 0 8px rgba(192,192,192,.3);">Choose where you want to go</h2>
 
     <section class="grid" aria-label="Primary navigation">
       <a class="card" href="/tutoring/">
