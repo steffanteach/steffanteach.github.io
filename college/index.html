@@ -4,306 +4,109 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>College & University Guidance | Steff Jones</title>
-  <meta name="description" content="College guidance: school list strategy, essay coaching, timelines, and application planning. 1‑on‑1 Zoom consults, tailored plans, and follow‑ups." />
-  <meta name="theme-color" content="#111111" />
-  <style>
-    :root{
-      --bg:#0c0c0f; --text:#f6f6f6; --muted:#b0b0b0; --accent:#e0112b;
-      --card:#141419; --silver:#c0c0c0; --radius:18px; --shadow-lg:0 20px 40px rgba(0,0,0,.35);
-    }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(192,192,192,.12), transparent 60%),
-                  radial-gradient(800px 600px at -10% 100%, rgba(192,192,192,.08), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-    }
-
-    .wrap{ width:min(1100px, 100%); margin: 0 auto; padding: 28px 20px 40px; }
-
-    header{ text-align:center; padding: 16px 0 8px; }
-    .eyebrow{ color:var(--silver); letter-spacing:.18em; text-transform:uppercase; font-size:12px; }
-    h1{ margin:8px 0 6px; font-size: clamp(28px, 5vw, 46px); font-weight:800; color:var(--text); text-shadow:0 0 10px rgba(192,192,192,.2); }
-    .subtitle{ margin:0 auto; color:var(--muted); max-width:820px; line-height:1.6; }
-
-    .cta-bar{ display:flex; gap:12px; justify-content:center; margin-top:16px; flex-wrap:wrap; }
-    .btn{ display:inline-flex; align-items:center; gap:10px; border-radius:999px; padding: 12px 18px; text-decoration:none; font-weight:700; border:1px solid rgba(192,192,192,.35); box-shadow: var(--shadow-lg); transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; cursor:pointer; }
-    .btn.primary{ background: linear-gradient(180deg, rgba(224,17,43,.14), rgba(255,255,255,.02)); color:var(--text); }
-    .btn.secondary{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.0)); color:var(--text); }
-    .btn:hover{ transform: translateY(-1px) scale(1.02); border-color: rgba(192,192,192,.6); box-shadow: 0 0 18px rgba(192,192,192,.28), var(--shadow-lg); }
-
-    /* Cards grid */
-    .grid{ margin-top:28px; display:grid; gap:18px; grid-template-columns: repeat(1, minmax(0, 1fr)); }
-    @media (min-width: 760px){ .grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
-
-    .card{ position:relative; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 20px 20px 22px; box-shadow: var(--shadow-lg); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease; }
-    .card::after{ content:""; position:absolute; inset:-2px; border-radius: calc(var(--radius) + 2px); background: radial-gradient(60% 60% at 50% 0%, rgba(192,192,192,.45), transparent 70%), radial-gradient(80% 80% at 50% 100%, rgba(192,192,192,.3), transparent 70%); filter: blur(14px); opacity:0; transition: opacity .25s ease; z-index:-1; }
-    .card:hover{ transform: translateY(-2px) scale(1.02); border-color: rgba(192,192,192,.45); background: linear-gradient(180deg, rgba(224,17,43,.05), rgba(255,255,255,.02)), var(--card); box-shadow: 0 0 20px rgba(192,192,192,.3), var(--shadow-lg); }
-    .card:hover::after{ opacity:.85; }
-    .badge{ display:inline-flex; align-items:center; gap:8px; font-weight:700; color: var(--text); font-size: 12px; background: rgba(192,192,192,.14); border:1px solid rgba(192,192,192,.45); padding: 6px 10px; border-radius: 999px; margin-bottom: 12px; }
-    .dot{ width:8px; height:8px; border-radius:50%; background: var(--accent); box-shadow: 0 0 10px rgba(224,17,43,.8), 0 0 25px rgba(224,17,43,.35); }
-    .card h3{ margin:6px 0 8px; font-size: 20px; color: var(--text); text-shadow: 0 0 6px rgba(192,192,192,.15); }
-    .card p{ margin:0; color: var(--muted); line-height:1.55; font-size: 15px; }
-    .card ul{ margin: 10px 0 0 18px; color: var(--muted); }
-
-    /* Section titles */
-    .section-title{ text-align:center; margin: 40px 0 8px; font-weight:800; color: var(--silver); text-shadow: 0 0 8px rgba(192,192,192,.3); font-size: clamp(18px, 3.4vw, 26px); }
-
-    /* Process */
-    .process{ display:grid; gap:16px; grid-template-columns: repeat(1, minmax(0,1fr)); margin-top: 14px; }
-    @media (min-width: 760px){ .process{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
-    .step{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-lg); }
-    .step .kicker{ font-size:12px; color: var(--silver); letter-spacing:.14em; text-transform:uppercase; }
-    .step h4{ margin:6px 0; font-size:18px; }
-    .step p{ margin:0; color: var(--muted); line-height:1.6; }
-
-    /* Embeds */
-    .embed{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 12px; box-shadow: var(--shadow-lg); }
-    .embed iframe{ width:100%; border:0; height: 760px; border-radius: calc(var(--radius) - 6px); }
-
-    /* Form styling */
-    .form{ display:grid; gap:16px; max-width:900px; margin:12px auto; }
-    .split{ display:grid; gap:16px; }
-    @media(min-width:760px){ .split{ grid-template-columns:1fr 1fr; } }
-    .field{ display:grid; gap:8px; }
-    label{ font-weight:700; font-size:15px; color:var(--text); letter-spacing:.2px; }
-    input, textarea, select{ width:100%; background:#0f0f14; color:var(--text); border:1px solid rgba(192,192,192,.28); border-radius:12px; padding:12px 14px; font-size:16px; box-shadow: inset 0 1px 0 rgba(255,255,255,.03); outline:none; transition:border-color .2s ease, box-shadow .2s ease; }
-    input:focus, textarea:focus, select:focus{ border-color: rgba(192,192,192,.6); box-shadow: 0 0 0 3px rgba(224,17,43,.25), inset 0 1px 0 rgba(255,255,255,.03); }
-    textarea{ min-height:130px; resize:vertical; }
-    .hint{ color:var(--muted); font-size:14px; }
-
-    details{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow-lg); }
-    summary{ cursor:pointer; font-weight:700; }
-    details + details{ margin-top:10px; }
-
-    footer{ text-align:center; margin: 36px 0 12px; color: var(--muted); font-size: 13px; border-top: 1px solid rgba(192,192,192,.15); padding-top: 12px; }
-  </style>
-  <!-- Calendly embed -->
+  <link rel="stylesheet" href="../assets/styles.css" />
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body>
   <main class="wrap" role="main">
     <header>
       <div class="eyebrow">College & University Guidance</div>
       <h1>Strategy. Story. Submission.</h1>
-      <p class="subtitle">I’m <strong>Steff Jones</strong> — educator, engineer, and D1 athlete — and I help students build a deliberate plan for applications: the right list, an authentic story, and deadlines that don’t sneak up on you. We’ll meet on Zoom, align on goals, and move through a clear timeline together.</p>
+      <p class="subtitle">School list strategy, essays, timelines, and application planning — 1-on-1 Zoom consult → monthly plan → follow-ups.</p>
       <div class="cta-bar">
-        <a class="btn primary" href="#book">Book a 1‑on‑1 Consult</a>
-        <a class="btn secondary" href="/" aria-label="Back to home">← Back to Home</a>
+        <a class="btn primary" href="#book">Book a 1-on-1 Consult</a>
+        <a class="btn secondary" href="/">← Back to Home</a>
       </div>
     </header>
 
     <!-- Offerings -->
-    <section aria-label="College guidance offerings" class="grid">
-      <article class="card">
-        <span class="badge"><span class="dot"></span> Strategy</span>
-        <h3>School List & Fit</h3>
-        <p>Balanced list targeting reach/target/safety with academic, athletic, and financial fit in mind.</p>
-        <ul>
-          <li>Interests & major exploration</li>
-          <li>Financial/merit scholarship considerations</li>
-          <li>Visit plan & outreach emails</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="badge"><span class="dot"></span> Essays</span>
-        <h3>Essays & Activities</h3>
-        <p>Authentic, structured writing that sounds like you — from brainstorming to final polish.</p>
-        <ul>
-          <li>Personal statement & supplement strategy</li>
-          <li>Activity list & impact framing</li>
-          <li>Draft feedback & revision plans</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="badge"><span class="dot"></span> Timeline</span>
-        <h3>Timeline & Testing</h3>
-        <p>Clear milestones for EA/ED/RD, testing choices, and recommendation logistics.</p>
-        <ul>
-          <li>SAT/ACT plan (or test‑optional pathways)</li>
-          <li>Recs, transcripts, and portals</li>
-          <li>Weekly checklist & accountability</li>
-        </ul>
-      </article>
+    <section class="grid">
+      <article class="card"><span class="badge"><span class="dot"></span> Strategy</span><h3>School List & Fit</h3><p>Balanced list across reach/target/safety with academic, athletic, and financial fit.</p></article>
+      <article class="card"><span class="badge"><span class="dot"></span> Essays</span><h3>Essays & Activities</h3><p>Brainstorm → structure → drafts → polish, in your authentic voice.</p></article>
+      <article class="card"><span class="badge"><span class="dot"></span> Timeline</span><h3>Timeline & Testing</h3><p>Milestones for EA/ED/RD, SAT/ACT plan, recs and portals.</p></article>
     </section>
 
-    <!-- Process -->
     <h2 class="section-title">How it works</h2>
-    <section class="process" aria-label="Process">
-      <div class="step">
-        <div class="kicker">Step 1</div>
-        <h4>1‑on‑1 Zoom consult</h4>
-        <p>We’ll discuss goals, programs of interest, constraints, and timelines. Bring any drafts or notes; we’ll map the path.</p>
-      </div>
-      <div class="step">
-        <div class="kicker">Step 2</div>
-        <h4>Tailored monthly plan</h4>
-        <p>School list refinement, essay milestones, outreach templates, and weekly tasks tied to your deadlines.</p>
-      </div>
-      <div class="step">
-        <div class="kicker">Step 3</div>
-        <h4>Follow‑ups included</h4>
-        <p>Regular check‑ins for accountability, essay feedback, and timeline adjustments as needed.</p>
-      </div>
+    <section class="process">
+      <div class="step"><div class="kicker">Step 1</div><h4>1-on-1 Zoom consult</h4><p>Goals, programs, constraints, and timeline.</p></div>
+      <div class="step"><div class="kicker">Step 2</div><h4>Tailored monthly plan</h4><p>School list refinement, essay checkpoints, outreach templates.</p></div>
+      <div class="step"><div class="kicker">Step 3</div><h4>Follow-ups included</h4><p>Regular check-ins and adjustments as needed.</p></div>
     </section>
 
-    <!-- Booking & Intake -->
     <h2 id="book" class="section-title">Schedule & Intake</h2>
-    <section class="embed" aria-label="Calendly inline scheduler" style="margin-top:10px;">
+    <section class="embed">
       <div class="calendly-inline-widget" data-url="https://calendly.com/steffjonesfit/30-min-gym-program-consultation" style="min-width:320px;height:760px;"></div>
-      <noscript>
-        <p>Scheduling requires JavaScript. You can also <a href="https://calendly.com/steffjonesfit/30-min-gym-program-consultation" style="color:#fff; text-decoration:underline;">open Calendly in a new tab</a>.</p>
-      </noscript>
     </section>
 
     <div id="scheduled-note" class="embed" style="display:none; margin-top:12px;">
-      <p style="margin:0; color:var(--text); font-weight:700;">✅ Booked! Next step:</p>
-      <p style="margin:.4rem 0 0; color:var(--muted);">Please complete the intake below so I can prep your plan before our call.</p>
+      <p style="margin:0; font-weight:700;">✅ Booked! Next step:</p>
+      <p class="hint" style="margin:.4rem 0 0;">Please complete the intake so I can prep your plan before our call.</p>
     </div>
 
-    <h2 class="section-title" id="intake" style="margin-top:18px;">College Guidance Intake</h2>
-    <section class="embed" aria-label="College Intake">
+    <h2 id="intake" class="section-title" style="margin-top:18px;">College Guidance Intake</h2>
+    <section class="embed">
       <form id="intakeForm" class="form">
         <div class="split">
-          <div class="field">
-            <label for="student">Student name</label>
-            <input id="student" name="student" required />
-          </div>
-          <div class="field">
-            <label for="year">Grade / year</label>
-            <input id="year" name="year" placeholder="e.g., 11th, Gap year, College transfer" />
-          </div>
+          <div class="field"><label for="student">Student name</label><input id="student" name="student" required></div>
+          <div class="field"><label for="year">Grade / year</label><input id="year" name="year" placeholder="11th, Gap year, Transfer"></div>
         </div>
         <div class="split">
-          <div class="field">
-            <label for="interests">Academic interests / majors</label>
-            <input id="interests" name="interests" placeholder="e.g., Engineering, Pre‑med, Business" />
-          </div>
-          <div class="field">
-            <label for="schools">Colleges of interest (if any)</label>
-            <input id="schools" name="schools" placeholder="e.g., Northeastern, Harvard, UMich" />
-          </div>
+          <div class="field"><label for="interests">Academic interests / majors</label><input id="interests" name="interests" placeholder="Engineering, Pre-med, Business"></div>
+          <div class="field"><label for="schools">Colleges of interest (if any)</label><input id="schools" name="schools" placeholder="Northeastern, Harvard, UMich"></div>
         </div>
         <div class="split">
-          <div class="field">
-            <label for="deadlines">Goals & key deadlines</label>
-            <textarea id="deadlines" name="deadlines" placeholder="EA/ED/RD targets, essay dates, test dates"></textarea>
-          </div>
-          <div class="field">
-            <label for="constraints">Budget & constraints</label>
-            <textarea id="constraints" name="constraints" placeholder="Scholarships, aid needs, geographic or sport commitments"></textarea>
-          </div>
+          <div class="field"><label for="deadlines">Goals & key deadlines</label><textarea id="deadlines" name="deadlines" placeholder="EA/ED/RD targets, essay dates, test dates"></textarea></div>
+          <div class="field"><label for="constraints">Budget & constraints</label><textarea id="constraints" name="constraints" placeholder="Aid/scholarships, geography, sport commitments"></textarea></div>
         </div>
-        <div class="field">
-          <label for="availability">Weekly availability & time zone</label>
-          <textarea id="availability" name="availability"></textarea>
-        </div>
-        <div class="field" style="display:flex; flex-wrap:wrap; align-items:center; gap:12px;">
+        <div class="field"><label for="availability">Weekly availability & time zone</label><textarea id="availability" name="availability"></textarea></div>
+        <div class="field" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
           <button class="btn primary" type="submit">Submit intake</button>
-          <span class="hint">This will open your email app; if it doesn't, your answers will be copied so you can paste into an email to <strong>steffdjones@gmail.com</strong>.</span>
+          <span class="hint">This opens your email app; if it doesn’t, your answers are copied to paste into an email to <strong>steffdjones@gmail.com</strong>.</span>
         </div>
       </form>
     </section>
 
     <div id="thankyou-note" class="embed" style="display:none; margin-top:12px; text-align:center;">
-      <p style="margin:0; color:var(--text); font-weight:700;">🙌 Thanks — you’re all set!</p>
-      <p style="margin:.4rem 0 0; color:var(--muted);">I’ll confirm our session and send a prep checklist before the call.</p>
+      <p style="margin:0; font-weight:700;">🙌 Thanks — you’re all set!</p>
+      <p class="hint">I’ll confirm our session and send a prep checklist.</p>
     </div>
 
-    <!-- FAQs -->
-    <h2 id="faq" class="section-title">FAQs</h2>
-    <section aria-label="FAQ" style="max-width:900px; margin: 10px auto 0; display:grid; gap:10px;">
-      <details>
-        <summary>Do you work with essay topics from scratch?</summary>
-        <p>Yes — we’ll brainstorm themes that feel authentic and align with your experiences. I give structure, not scripts, so the voice stays yours.</p>
-      </details>
-      <details>
-        <summary>Can you help with financial aid and scholarships?</summary>
-        <p>I can help you understand aid types, scholarship search strategy, and how to present context in applications. For complex aid forms, I’ll point to official resources.</p>
-      </details>
-      <details>
-        <summary>Do you support transfers or international students?</summary>
-        <p>Yes — we’ll tailor plans to transfer requirements or international timelines, including testing and documentation differences.</p>
-      </details>
-    </section>
-
-    <footer>
-      <p>&copy; <span id="year"></span> Steff Jones. <a href="/" style="color:inherit;">Home</a></p>
-    </footer>
+    <footer><p>&copy; <span id="year"></span> Steff Jones. <a href="/" style="color:inherit;">Home</a></p></footer>
   </main>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Calendly scheduled → show note & scroll to intake
-    window.addEventListener('message', function(e){
+    document.getElementById('year').textContent=new Date().getFullYear();
+    window.addEventListener('message',function(e){
       try{
-        if(!e || !e.data) return;
-        if(e.origin && e.origin.indexOf('calendly.com') === -1) return;
-        var data = e.data; if(typeof data === 'string'){ try{ data = JSON.parse(data); }catch(err){} }
-        if(data && data.event === 'calendly.event_scheduled'){
-          var note = document.getElementById('scheduled-note'); if(note){ note.style.display = 'block'; }
-          var intake = document.getElementById('intake'); if(intake){ intake.scrollIntoView({behavior:'smooth', block:'start'}); }
+        if(!e||!e.data) return; if(e.origin && e.origin.indexOf('calendly.com')===-1) return;
+        var d=e.data; if(typeof d==='string'){try{d=JSON.parse(d)}catch{}}
+        if(d&&d.event==='calendly.event_scheduled'){
+          document.getElementById('scheduled-note').style.display='block';
+          document.getElementById('intake').scrollIntoView({behavior:'smooth',block:'start'});
         }
-      }catch(err){}
+      }catch(_){}
     });
-
-    // Intake form → compose email via mailto; copy to clipboard; thank you
     (function(){
-      var f = document.getElementById('intakeForm');
-      if(!f) return;
-      f.addEventListener('submit', function(ev){
+      var f=document.getElementById('intakeForm'); if(!f) return;
+      f.addEventListener('submit',function(ev){
         ev.preventDefault();
-        var v = new FormData(f);
-        var student = (v.get('student')||'').trim();
-        var year = (v.get('year')||'').trim();
-        var interests = (v.get('interests')||'').trim();
-        var schools = (v.get('schools')||'').trim();
-        var deadlines = (v.get('deadlines')||'').trim();
-        var constraints = (v.get('constraints')||'').trim();
-        var avail = (v.get('availability')||'').trim();
-
-        var subject = 'College Guidance Intake — ' + (student||'Student');
-        var friendly = [
-          'Hi Steff,',
-          '',
-          'Thanks for your help with college planning! Here are my details:',
-          '',
-          'Student: ' + student,
-          'Grade/Year: ' + year,
-          'Interests/Majors: ' + interests,
-          'Colleges of Interest: ' + schools,
-          'Goals & Deadlines: ' + deadlines,
-          'Budget/Constraints: ' + constraints,
-          'Availability/Timezone: ' + avail,
-          '',
-          'Looking forward to our session.',
-          '',
-          'Best,',
-          (student||'')
+        var v=new FormData(f);
+        var student=(v.get('student')||'').trim(), year=(v.get('year')||'').trim(),
+            interests=(v.get('interests')||'').trim(), schools=(v.get('schools')||'').trim(),
+            deadlines=(v.get('deadlines')||'').trim(), constraints=(v.get('constraints')||'').trim(),
+            avail=(v.get('availability')||'').trim();
+        var subject='College Guidance Intake — '+(student||'Student');
+        var body=[
+          'Hi Steff,','','Thanks for your help with college planning! Here are my details:','',
+          'Student: '+student,'Grade/Year: '+year,'Interests/Majors: '+interests,'Colleges of Interest: '+schools,
+          'Goals & Deadlines: '+deadlines,'Budget/Constraints: '+constraints,'Availability/Timezone: '+avail,'',
+          'Best,',student
         ].join('\n');
-
-        var email = 'steffdjones@gmail.com';
-        var mailto = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(friendly);
-        try { window.location.href = mailto; } catch(e) {}
-
-        var lines = [
-          'College Guidance Intake',
-          'Student: ' + student,
-          'Grade/Year: ' + year,
-          'Interests/Majors: ' + interests,
-          'Colleges of Interest: ' + schools,
-          'Goals/Deadlines: ' + deadlines,
-          'Budget/Constraints: ' + constraints,
-          'Availability/Timezone: ' + avail
-        ].join('\n');
-        if(navigator.clipboard){ navigator.clipboard.writeText(lines); }
-
-        var t = document.getElementById('thankyou-note'); if(t){ t.style.display='block'; t.scrollIntoView({behavior:'smooth', block:'start'}); }
-        f.reset();
+        try{ window.location.href='mailto:steffdjones@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);}catch(_){}
+        var summary=['College Guidance Intake','Student: '+student,'Grade/Year: '+year,'Interests/Majors: '+interests,'Colleges of Interest: '+schools,'Goals/Deadlines: '+deadlines,'Budget/Constraints: '+constraints,'Availability/Timezone: '+avail].join('\n');
+        navigator.clipboard?.writeText(summary);
+        var t=document.getElementById('thankyou-note'); t.style.display='block'; t.scrollIntoView({behavior:'smooth'}); f.reset();
       });
     })();
   </script>
