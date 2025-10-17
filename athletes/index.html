@@ -162,12 +162,22 @@
       <p style="margin:.4rem 0 0; color:var(--muted);">Please complete the intake form below so I can tailor your plan before our call.</p>
     </div>
 
-    <p style="text-align:center; margin:14px 0 0; color:var(--muted);">Questions before scheduling? <a href="mailto:steffdjones@gmail.com" style="color:#fff; text-decoration:underline;">Email me</a>.</p>
+    <p style="text-align:center; margin:14px 0 0; color:var(--muted);">Questions before scheduling? <a href="#" id="emailLink" style="color:#fff; text-decoration:underline;">Email me</a> · <button id="copyEmailBtn" type="button" style="background:none;border:none;color:#c0c0c0;text-decoration:underline;cursor:pointer;">Copy email</button>.</p>
 
     <h2 class="section-title" id="intake" style="margin-top:18px;">Training Intake Form</h2>
     <section class="embed" aria-label="Intake form">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesznmN29C_61NNdbq3drNU5tl0qa53Gu_aJnjw2kImUjEBcA/viewform?embedded=true" title="Training Intake Form">Loading…</iframe>
+      <iframe id="intakeFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSesznmN29C_61NNdbq3drNU5tl0qa53Gu_aJnjw2kImUjEBcA/viewform?embedded=true" title="Training Intake Form">Loading…</iframe>
     </section>
+
+    <div class="embed" style="margin-top:12px; text-align:center;">
+      <button id="markSubmitted" class="btn primary" type="button" style="margin:6px auto;">I submitted the intake form</button>
+      <p style="margin:6px 0 0; color:var(--muted); font-size:14px;">(Google Forms doesn’t allow us to detect your submission automatically.)</p>
+    </div>
+
+    <div id="thankyou-note" class="embed" style="display:none; margin-top:12px;">
+      <p style="margin:0; color:var(--text); font-weight:700;">🙌 Thanks — you’re all set!</p>
+      <p style="margin:.4rem 0 0; color:var(--muted);">I’ll review your intake and send your initial plan within 4–6 days. If anything changes, just reply to the confirmation email.</p>
+    </div>
 
     <!-- FAQs -->
     <h2 id="faq" class="section-title">FAQs</h2>
@@ -214,6 +224,38 @@
         }
       }catch(err){ /* ignore */ }
     });
+    </script>
+  <script>
+    (function(){
+      var email = 'steffdjones@gmail.com';
+      var emailLink = document.getElementById('emailLink');
+      var copyBtn = document.getElementById('copyEmailBtn');
+      if(emailLink){
+        emailLink.addEventListener('click', function(e){
+          e.preventDefault();
+          try{
+            window.location.href = 'mailto:'+email+'?subject=Question%20about%20training';
+            setTimeout(function(){
+              if(navigator.clipboard){ navigator.clipboard.writeText(email); }
+            }, 800);
+          }catch(err){ /* ignore */ }
+        });
+      }
+      if(copyBtn){
+        copyBtn.addEventListener('click', function(){
+          if(navigator.clipboard){ navigator.clipboard.writeText(email); }
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function(){ copyBtn.textContent = 'Copy email'; }, 1800);
+        });
+      }
+      var markBtn = document.getElementById('markSubmitted');
+      if(markBtn){
+        markBtn.addEventListener('click', function(){
+          var t = document.getElementById('thankyou-note');
+          if(t){ t.style.display = 'block'; t.scrollIntoView({behavior:'smooth', block:'start'}); }
+        });
+      }
+    })();
   </script>
 </body>
 </html>
