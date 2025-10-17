@@ -59,14 +59,31 @@
     <header>
       <div class="eyebrow">Academic Tutoring</div>
       <h1>Clarity. Confidence. Consistency.</h1>
-      <p class="subtitle">I’m <strong>Steff Jones</strong> — an engineer, educator, and D1 400m athlete who helps students make sense of challenging material through structure and motivation. Whether it’s math, science, writing, or study skills, we’ll meet 1‑on‑1 over Zoom and build a plan around your needs.</p>
+      <p class="subtitle">I’m <strong>Steff Jones</strong> — an engineer, educator, and D1 400m athlete who helps students make sense of challenging material through structure and motivation. Whether it’s math, science, writing, or study skills, we’ll meet 1-on-1 over Zoom and build a plan around your needs.</p>
       <div class="cta-bar">
         <a class="btn primary" href="#book">Book a Consult</a>
         <a class="btn secondary" href="/">← Back to Home</a>
       </div>
     </header>
 
+    <!-- Booking & Consult -->
+    <h2 id="book" class="section-title">Schedule Your Consultation</h2>
+    <section class="embed" aria-label="Calendly inline scheduler" style="margin-top:10px;">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/steffjonesfit/30-min-gym-program-consultation" style="min-width:320px;height:760px;"></div>
+      <noscript>
+        <p>Scheduling requires JavaScript. You can also <a href="https://calendly.com/steffjonesfit/30-min-gym-program-consultation" style="color:#fff; text-decoration:underline;">open Calendly in a new tab</a>.</p>
+      </noscript>
+    </section>
+
+    <div id="scheduled-note" class="card" style="display:none; margin-top:12px;">
+      <p style="margin:0; color:var(--text); font-weight:700;">✅ Booked! Next step:</p>
+      <p style="margin:.4rem 0 0; color:var(--muted);">Please complete the short intake below so I can prep materials for our first session.</p>
+      <p style="margin:.4rem 0 0; color:var(--muted);">Questions? <a href="#" id="emailLink" style="color:#fff; text-decoration:underline;">Email me</a> · <button id="copyEmailBtn" type="button" style="background:none;border:none;color:#c0c0c0;text-decoration:underline;cursor:pointer;">Copy email</button></p>
+    </div>
+
     <h2 class="section-title">Tutoring Intake</h2>
+    <p style="text-align:center; color:var(--muted); margin:6px 0 10px;">Submitting this form will <strong>open your email app</strong> to send your answers to <a href="#" id="emailLinkTop" style="color:#fff; text-decoration:underline;">steffdjones@gmail.com</a>. If your device doesn’t have an email app configured, your answers will be <strong>copied to your clipboard</strong> so you can paste them into an email.</p>
+
     <form id="intakeForm" class="form">
       <div class="field">
         <label for="name">Student Name</label>
@@ -90,7 +107,7 @@
       </div>
       <div class="field">
         <button class="btn primary" type="submit">Submit Intake</button>
-        <span id="formHint" style="color:var(--muted); font-size:14px;">This will open your email app and copy your answers if it doesn’t.</span>
+        <a class="btn secondary" href="mailto:steffdjones@gmail.com?subject=Tutoring%20Question" style="display:inline-flex; align-items:center;">Or email me directly</a>
       </div>
     </form>
 
@@ -118,6 +135,60 @@
       document.getElementById('thankyou-note').scrollIntoView({behavior:'smooth'});
       form.reset();
     });
+    </script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Calendly scheduled → show note & scroll to intake
+    window.addEventListener('message', function(e){
+      try{
+        if(!e || !e.data) return;
+        if(e.origin && e.origin.indexOf('calendly.com') === -1) return;
+        var data = e.data; if(typeof data === 'string'){ try{ data = JSON.parse(data); }catch(err){} }
+        if(data && data.event === 'calendly.event_scheduled'){
+          var note = document.getElementById('scheduled-note'); if(note){ note.style.display = 'block'; }
+          var intakeTitle = document.querySelector('h2.section-title + p + form') || document.getElementById('intakeForm');
+          if(intakeTitle){ intakeTitle.scrollIntoView({behavior:'smooth', block:'start'}); }
+        }
+      }catch(err){}
+    });
+
+    // Email helpers (top and in scheduled note)
+    (function(){
+      var email = 'steffdjones@gmail.com';
+      function attach(id){
+        var el = document.getElementById(id); if(!el) return;
+        el.addEventListener('click', function(e){ e.preventDefault(); try{ window.location.href = 'mailto:'+email+'?subject=Tutoring%20Question'; setTimeout(function(){ if(navigator.clipboard){ navigator.clipboard.writeText(email); } }, 800);}catch(err){} });
+      }
+      attach('emailLink');
+      attach('emailLinkTop');
+      var copyBtn = document.getElementById('copyEmailBtn');
+      if(copyBtn){ copyBtn.addEventListener('click', function(){ if(navigator.clipboard){ navigator.clipboard.writeText(email); } copyBtn.textContent='Copied!'; setTimeout(function(){ copyBtn.textContent='Copy email'; },1800); }); }
+    })();
+
+    // Intake form → compose email + clipboard + thank you
+    (function(){
+      var form = document.getElementById('intakeForm');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var v = new FormData(form);
+        var lines = [
+          'Tutoring Intake',
+          'Name: '+(v.get('name')||''),
+          'Grade/Level: '+(v.get('grade')||''),
+          'Desired Topic: '+(v.get('topic')||''),
+          'Goals/Deadlines: '+(v.get('goals')||''),
+          'Availability/Timezone: '+(v.get('availability')||'')
+        ].join('
+');
+        var mailto = 'mailto:steffdjones@gmail.com?subject=' + encodeURIComponent('Tutoring Intake — '+(v.get('name')||'')) + '&body=' + encodeURIComponent(lines);
+        try{ window.location.href = mailto; }catch(err){}
+        if(navigator.clipboard){ navigator.clipboard.writeText(lines); }
+        var t = document.getElementById('thankyou-note'); if(t){ t.style.display='block'; t.scrollIntoView({behavior:'smooth', block:'start'}); }
+        form.reset();
+      });
+    })();
   </script>
 </body>
 </html>
