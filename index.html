@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome | Teaching with Steffan Jones</title>
+  <meta name="description" content="Tutoring, college guidance, and athlete training resources in one place." />
+  <meta property="og:title" content="Welcome | Teaching with Steffan Jones" />
+  <meta property="og:description" content="Choose tutoring, college guidance, or athlete training." />
+  <meta name="theme-color" content="#111111" />
+  <style>
+    :root{
+      --bg:#0c0c0f;         /* near-black */
+      --text:#f6f6f6;       /* off-white */
+      --muted:#b0b0b0;      /* muted gray */
+      --accent:#e0112b;     /* red */
+      --card:#141419;       /* card base */
+      --glow: 0 0 0 rgba(224,17,43,0); /* default no glow */
+      --radius: 18px;
+      --shadow-lg: 0 20px 40px rgba(0,0,0,.35);
+    }
+
+    /* Reset & base */
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(224,17,43,.12), transparent 60%),
+                  radial-gradient(800px 600px at -10% 100%, rgba(224,17,43,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      display:grid; place-items:center;
+      padding: 32px; 
+    }
+
+    .wrap{
+      width:min(1100px, 100%);
+    }
+
+    header{
+      text-align:center; margin-bottom: 28px;
+    }
+
+    h1{
+      margin:0; font-size: clamp(28px, 5vw, 48px); letter-spacing:.5px; font-weight:800;
+    }
+
+    .subtitle{
+      margin-top:10px; color:var(--muted); font-size: clamp(14px, 2.2vw, 18px);
+    }
+
+    .grid{
+      margin-top:28px; display:grid; gap:18px;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    @media (min-width: 680px){ .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+    a.card{
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)) , var(--card);
+      border-radius: var(--radius);
+      padding: 22px 22px 24px;
+      text-decoration:none; color:inherit; position:relative; isolation:isolate;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255,255,255,.06);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      will-change: transform, box-shadow;
+      outline: none;
+    }
+
+    a.card:focus-visible{
+      box-shadow: 0 0 0 3px rgba(224,17,43,.6), var(--shadow-lg);
+    }
+
+    .card::after{
+      /* glow ring */
+      content:""; position:absolute; inset:-2px; border-radius: calc(var(--radius) + 2px);
+      background: radial-gradient(60% 60% at 50% 0%, rgba(224,17,43,.45), transparent 70%),
+                  radial-gradient(80% 80% at 50% 100%, rgba(224,17,43,.30), transparent 70%);
+      filter: blur(14px); opacity:.0; transition: opacity .25s ease; z-index:-1;
+    }
+
+    a.card:hover, a.card:focus-visible{
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(224,17,43,.45);
+    }
+    a.card:hover::after, a.card:focus-visible::after{ opacity:.9; }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px; font-weight:700; color: var(--text);
+      font-size: 13px; letter-spacing:.3px;
+      background: rgba(224,17,43,.14); border:1px solid rgba(224,17,43,.45);
+      padding: 6px 10px; border-radius: 999px; margin-bottom: 14px;
+    }
+    .badge .dot{ width:8px; height:8px; border-radius:50%; background: var(--accent); box-shadow: 0 0 10px rgba(224,17,43,.8), 0 0 25px rgba(224,17,43,.35); }
+
+    .card h2{ margin:6px 0 6px; font-size: 22px; }
+    .card p{ margin:0; color: var(--muted); line-height:1.5; font-size: 15px; }
+
+    footer{ text-align:center; margin-top: 28px; color: var(--muted); font-size: 13px; }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      a.card{ transition: none; }
+      .card::after{ transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <header>
+      <h1>Welcome</h1>
+      <p class="subtitle">Choose where you want to go.</p>
+    </header>
+
+    <section class="grid" aria-label="Primary navigation">
+      <a class="card" href="/tutoring/" aria-label="Go to Tutoring">
+        <span class="badge"><span class="dot" aria-hidden="true"></span> Tutoring</span>
+        <h2>Academic Tutoring</h2>
+        <p>Targeted help in math, science, writing, and more. Clear goals, thoughtful explanations, measurable progress.</p>
+      </a>
+
+      <a class="card" href="/college/" aria-label="Go to College Guidance">
+        <span class="badge"><span class="dot" aria-hidden="true"></span> College</span>
+        <h2>College Guidance</h2>
+        <p>Applications, essays, timelines, and strategy—from building a school list to hitting submit with confidence.</p>
+      </a>
+
+      <a class="card" href="/athletes/" aria-label="Go to Athlete Training">
+        <span class="badge"><span class="dot" aria-hidden="true"></span> Training</span>
+        <h2>Athlete Training</h2>
+        <p>Programs for speed, power, and resilience. Smart planning for track & field and overall performance.</p>
+      </a>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Steffan Jones. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
