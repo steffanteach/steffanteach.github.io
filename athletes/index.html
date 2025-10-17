@@ -4,104 +4,258 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Athlete Training | Steff Jones</title>
-  <link rel="stylesheet" href="../assets/styles.css" />
+  <meta name="description" content="Lift coaching, track training, and sprint training for athletes. 1-on-1 consults, tailored monthly plans, and follow-ups." />
+  <meta name="theme-color" content="#111111" />
+  <style>
+    :root{
+      --bg:#0c0c0f;
+      --text:#f6f6f6;
+      --muted:#b0b0b0;
+      --accent:#e0112b;
+      --card:#141419;
+      --silver:#c0c0c0;
+      --radius:18px;
+      --shadow-lg:0 20px 40px rgba(0,0,0,.35);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(192,192,192,.12), transparent 60%),
+                  radial-gradient(800px 600px at -10% 100%, rgba(192,192,192,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+    }
+
+    .wrap{ width:min(1100px, 100%); margin: 0 auto; padding: 28px 20px 40px; }
+
+    header{ text-align:center; padding: 16px 0 8px; }
+    .eyebrow{ color:var(--silver); letter-spacing:.18em; text-transform:uppercase; font-size:12px; }
+    h1{ margin:8px 0 6px; font-size: clamp(28px, 5vw, 46px); font-weight:800; color:var(--text); text-shadow:0 0 10px rgba(192,192,192,.2); }
+    .subtitle{ margin:0 auto; color:var(--muted); max-width:820px; line-height:1.6; }
+
+    .cta-bar{ display:flex; gap:12px; justify-content:center; margin-top:16px; flex-wrap:wrap; }
+    .btn{ display:inline-flex; align-items:center; gap:10px; border-radius:999px; padding: 12px 18px; text-decoration:none; font-weight:700; border:1px solid rgba(192,192,192,.35); box-shadow: var(--shadow-lg); transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
+    .btn.primary{ background: linear-gradient(180deg, rgba(224,17,43,.14), rgba(255,255,255,.02)); color:var(--text); }
+    .btn.secondary{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.0)); color:var(--text); }
+    .btn:hover{ transform: translateY(-1px) scale(1.02); border-color: rgba(192,192,192,.6); box-shadow: 0 0 18px rgba(192,192,192,.28), var(--shadow-lg); }
+
+    /* Cards grid */
+    .grid{ margin-top:28px; display:grid; gap:18px; grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    @media (min-width: 760px){ .grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+
+    .card{ position:relative; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 20px 20px 22px; box-shadow: var(--shadow-lg); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease; }
+    .card::after{ content:""; position:absolute; inset:-2px; border-radius: calc(var(--radius) + 2px); background: radial-gradient(60% 60% at 50% 0%, rgba(192,192,192,.45), transparent 70%), radial-gradient(80% 80% at 50% 100%, rgba(192,192,192,.3), transparent 70%); filter: blur(14px); opacity:0; transition: opacity .25s ease; z-index:-1; }
+    .card:hover{ transform: translateY(-2px) scale(1.02); border-color: rgba(192,192,192,.45); background: linear-gradient(180deg, rgba(224,17,43,.05), rgba(255,255,255,.02)), var(--card); box-shadow: 0 0 20px rgba(192,192,192,.3), var(--shadow-lg); }
+    .card:hover::after{ opacity:.85; }
+    .badge{ display:inline-flex; align-items:center; gap:8px; font-weight:700; color: var(--text); font-size: 12px; background: rgba(192,192,192,.14); border:1px solid rgba(192,192,192,.45); padding: 6px 10px; border-radius: 999px; margin-bottom: 12px; }
+    .dot{ width:8px; height:8px; border-radius:50%; background: var(--accent); box-shadow: 0 0 10px rgba(224,17,43,.8), 0 0 25px rgba(224,17,43,.35); }
+    .card h3{ margin:6px 0 8px; font-size: 20px; color: var(--text); text-shadow: 0 0 6px rgba(192,192,192,.15); }
+    .card p{ margin:0; color: var(--muted); line-height:1.55; font-size: 15px; }
+    .card ul{ margin: 10px 0 0 18px; color: var(--muted); }
+
+    /* Section titles */
+    .section-title{ text-align:center; margin: 40px 0 8px; font-weight:800; color: var(--silver); text-shadow: 0 0 8px rgba(192,192,192,.3); font-size: clamp(18px, 3.4vw, 26px); }
+
+    /* Process */
+    .process{ display:grid; gap:16px; grid-template-columns: repeat(1, minmax(0,1fr)); margin-top: 14px; }
+    @media (min-width: 760px){ .process{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    .step{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-lg); }
+    .step .kicker{ font-size:12px; color: var(--silver); letter-spacing:.14em; text-transform:uppercase; }
+    .step h4{ margin:6px 0; font-size:18px; }
+    .step p{ margin:0; color: var(--muted); line-height:1.6; }
+
+    /* Embed containers */
+    .embed{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 12px; box-shadow: var(--shadow-lg); }
+    .embed iframe{ width:100%; border:0; height: 760px; border-radius: calc(var(--radius) - 6px); }
+
+    details{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow-lg); }
+    summary{ cursor:pointer; font-weight:700; }
+    details + details{ margin-top:10px; }
+
+    footer{ text-align:center; margin: 36px 0 12px; color: var(--muted); font-size: 13px; border-top: 1px solid rgba(192,192,192,.15); padding-top: 12px; }
+  </style>
+  <!-- Calendly embed -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
   <main class="wrap" role="main">
     <header>
       <div class="eyebrow">Athlete Training</div>
-      <h1>Strength. Speed. Smart Planning.</h1>
-      <p class="subtitle">Lift coaching, track training, and sprint work for other sports. 1-on-1 Zoom consult → tailored monthly plan → follow-ups included.</p>
+      <h1>Speed. Strength. Structure.</h1>
+      <p class="subtitle">I’m <strong>Steff Jones</strong>, an NCAA Division I 400m sprinter and coach. I help athletes get faster and stronger with tailored, evidence‑based programming — whether you’re a track athlete or you need sprint speed for another sport. We’ll meet 1‑on‑1 on Zoom, align on goals, and build a monthly plan that actually fits your life.</p>
       <div class="cta-bar">
-        <a class="btn primary" href="#book">Book a Consult</a>
-        <a class="btn secondary" href="/">← Back to Home</a>
+        <a class="btn primary" href="#book">Book a 1‑on‑1 Consult</a>
+        <a class="btn secondary" href="/" aria-label="Back to home">← Back to Home</a>
       </div>
     </header>
 
     <!-- Offerings -->
-    <section class="grid">
+    <section aria-label="Training offerings" class="grid">
       <article class="card">
         <span class="badge"><span class="dot"></span> Lift Coaching</span>
         <h3>Strength & Power</h3>
+        <p>Customized lifting cycles to build force, rate of force development, and durability. Technique feedback, progressions, and weekly checks.</p>
         <ul>
           <li>Block periodization matched to your season</li>
-          <li>Movement quality & video feedback</li>
-          <li>Accessory work for durability</li>
+          <li>Movement quality & cueing (video feedback optional)</li>
+          <li>Accessory work for injury prevention</li>
         </ul>
       </article>
+
       <article class="card">
         <span class="badge"><span class="dot"></span> Track Training</span>
         <h3>Sprint Mechanics & Speed</h3>
+        <p>Event‑specific plans for 60–400m with acceleration, max‑V, and speed endurance workouts — plus recovery and mobility built‑in.</p>
         <ul>
-          <li>Weekly speed/tempo/technical sessions</li>
-          <li>Starts, posture, contact time focus</li>
-          <li>Measurable targets (splits, RPE, volume)</li>
+          <li>Weekly speed, tempo, and technical sessions</li>
+          <li>Starts, posture, and contact time focus</li>
+          <li>Measurable targets (splits, volumes, RPE)</li>
         </ul>
       </article>
+
       <article class="card">
-        <span class="badge"><span class="dot"></span> Other Sports</span>
-        <h3>Game-Speed Acceleration</h3>
+        <span class="badge"><span class="dot"></span> Sprint Training for Other Sports</span>
+        <h3>Game‑Speed Acceleration</h3>
+        <p>For football, soccer, lacrosse, and more — translate sprint mechanics into shorter ground contact and sharper first steps.</p>
         <ul>
-          <li>Short-burst acceleration & COD</li>
-          <li>Power + plyos integrated with practice</li>
-          <li>Field-ready warm-ups & micro-doses</li>
+          <li>Short‑burst acceleration & COD emphasis</li>
+          <li>Power + plyometrics integrated with practice</li>
+          <li>Field‑ready warm‑ups & micro‑doses</li>
         </ul>
       </article>
     </section>
 
+    <!-- Process -->
     <h2 class="section-title">How it works</h2>
-    <section class="process">
-      <div class="step"><div class="kicker">Step 1</div><h4>1-on-1 Zoom consult</h4><p>Goals, training history, schedule.</p></div>
-      <div class="step"><div class="kicker">Step 2</div><h4>Tailored monthly plan</h4><p>4-week plan aligned to your needs.</p></div>
-      <div class="step"><div class="kicker">Step 3</div><h4>Follow-ups included</h4><p>Weekly check-ins and adjustments.</p></div>
+    <section class="process" aria-label="Process">
+      <div class="step">
+        <div class="kicker">Step 1</div>
+        <h4>1‑on‑1 Zoom consult</h4>
+        <p>We’ll discuss goals, training history, schedule, access to equipment, and any constraints. I’ll review any recent performances or videos you want to share.</p>
+      </div>
+      <div class="step">
+        <div class="kicker">Step 2</div>
+        <h4>Tailored monthly plan</h4>
+        <p>You’ll receive a 4‑week training plan matched to your needs and calendar: workouts, lifts, mobility, and recovery with clear instructions and targets.</p>
+      </div>
+      <div class="step">
+        <div class="kicker">Step 3</div>
+        <h4>Follow‑ups included</h4>
+        <p>We’ll check in weekly by message and do a Zoom follow‑up to review progress, adjust loads, and keep you on track.</p>
+      </div>
     </section>
 
+    <!-- Booking & Intake -->
     <h2 id="book" class="section-title">Schedule & Intake</h2>
-    <section class="embed">
+    <section class="embed" aria-label="Calendly inline scheduler" style="margin-top:10px;">
       <div class="calendly-inline-widget" data-url="https://calendly.com/steffjonesfit/30-min-gym-program-consultation" style="min-width:320px;height:760px;"></div>
+      <noscript>
+        <p>Scheduling requires JavaScript. You can also <a href="https://calendly.com/steffjonesfit/30-min-gym-program-consultation" style="color:#fff; text-decoration:underline;">open Calendly in a new tab</a>.</p>
+      </noscript>
     </section>
 
     <div id="scheduled-note" class="embed" style="display:none; margin-top:12px;">
-      <p style="margin:0; font-weight:700;">✅ Booked! Next step:</p>
-      <p class="hint" style="margin:.4rem 0 0;">Please complete the intake form below so I can tailor your plan.</p>
+      <p style="margin:0; color:var(--text); font-weight:700;">✅ Booked! Next step:</p>
+      <p style="margin:.4rem 0 0; color:var(--muted);">Please complete the intake form below so I can tailor your plan before our call.</p>
     </div>
 
-    <h2 id="intake" class="section-title" style="margin-top:18px;">Training Intake Form</h2>
-    <section class="embed">
-      <!-- Your Google Form embed -->
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSesznmN29C_61NNdbq3drNU5tl0qa53Gu_aJnjw2kImUjEBcA/viewform?embedded=true" title="Training Intake">Loading…</iframe>
+    <p style="text-align:center; margin:14px 0 0; color:var(--muted);">Questions before scheduling? <a href="#" id="emailLink" style="color:#fff; text-decoration:underline;">Email me</a> · <button id="copyEmailBtn" type="button" style="background:none;border:none;color:#c0c0c0;text-decoration:underline;cursor:pointer;">Copy email</button>.</p>
+
+    <h2 class="section-title" id="intake" style="margin-top:18px;">Training Intake Form</h2>
+    <section class="embed" aria-label="Intake form">
+      <iframe id="intakeFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSesznmN29C_61NNdbq3drNU5tl0qa53Gu_aJnjw2kImUjEBcA/viewform?embedded=true" title="Training Intake Form">Loading…</iframe>
     </section>
 
     <div class="embed" style="margin-top:12px; text-align:center;">
-      <button id="markSubmitted" class="btn primary" type="button">I submitted the intake form</button>
-      <p class="hint">(Google Forms can’t be detected automatically.)</p>
+      <button id="markSubmitted" class="btn primary" type="button" style="margin:6px auto;">I submitted the intake form</button>
+      <p style="margin:6px 0 0; color:var(--muted); font-size:14px;">(Google Forms doesn’t allow us to detect your submission automatically.)</p>
     </div>
 
-    <div id="thankyou-note" class="embed" style="display:none; margin-top:12px; text-align:center;">
-      <p style="margin:0; font-weight:700;">🙌 Thanks — you’re all set!</p>
-      <p class="hint">I’ll review your intake and send your initial plan within 4–6 days.</p>
+    <div id="thankyou-note" class="embed" style="display:none; margin-top:12px;">
+      <p style="margin:0; color:var(--text); font-weight:700;">🙌 Thanks — you’re all set!</p>
+      <p style="margin:.4rem 0 0; color:var(--muted);">I’ll review your intake and send your initial plan within 4–6 days. If anything changes, just reply to the confirmation email.</p>
     </div>
 
-    <footer><p>&copy; <span id="year"></span> Steff Jones. <a href="/" style="color:inherit;">Home</a></p></footer>
+    <!-- FAQs -->
+    <h2 id="faq" class="section-title">FAQs</h2>
+    <section aria-label="FAQ" style="max-width:900px; margin: 10px auto 0; display:grid; gap:10px;">
+      <details>
+        <summary>Do you coach remotely?</summary>
+        <p>Yes — consults and follow‑ups are via Zoom. Plans are delivered in shareable documents with clear progressions and targets.</p>
+      </details>
+      <details>
+        <summary>What equipment do I need?</summary>
+        <p>We’ll build around what you have — from full gym access to minimal equipment. I’ll include alternatives and bodyweight options where needed.</p>
+      </details>
+      <details>
+        <summary>Can this fit around my season?</summary>
+        <p>Absolutely. We’ll align the plan with off‑season, pre‑season, or in‑season demands so you can improve without excess fatigue.</p>
+      </details>
+      <details>
+        <summary>How do follow‑ups work?</summary>
+        <p>Weekly check‑ins by message, plus a Zoom review to adjust the plan. You’re never stuck guessing the next step.</p>
+      </details>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Steff Jones. <a href="/" style="color:inherit;">Home</a></p>
+    </footer>
   </main>
 
   <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
-    window.addEventListener('message',function(e){
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Show a success note after a Calendly event is scheduled and scroll to intake
+    window.addEventListener('message', function(e){
       try{
-        if(!e||!e.data) return; if(e.origin && e.origin.indexOf('calendly.com')===-1) return;
-        var d=e.data; if(typeof d==='string'){try{d=JSON.parse(d)}catch{}}
-        if(d&&d.event==='calendly.event_scheduled'){
-          var n=document.getElementById('scheduled-note'); if(n){n.style.display='block'}
-          var i=document.getElementById('intake'); if(i){i.scrollIntoView({behavior:'smooth',block:'start'})}
+        if(!e || !e.data) return;
+        if(e.origin && e.origin.indexOf('calendly.com') === -1) return;
+        var data = e.data;
+        if(typeof data === 'string'){
+          try{ data = JSON.parse(data); }catch(err){}
         }
-      }catch(_){}
+        if(data && data.event === 'calendly.event_scheduled'){
+          var note = document.getElementById('scheduled-note');
+          if(note){ note.style.display = 'block'; }
+          var intake = document.getElementById('intake');
+          if(intake){ intake.scrollIntoView({behavior:'smooth', block:'start'}); }
+        }
+      }catch(err){ /* ignore */ }
     });
-    document.getElementById('markSubmitted')?.addEventListener('click',function(){
-      var t=document.getElementById('thankyou-note'); if(t){t.style.display='block'; t.scrollIntoView({behavior:'smooth'})}
-    });
+    </script>
+  <script>
+    (function(){
+      var email = 'steffdjones@gmail.com';
+      var emailLink = document.getElementById('emailLink');
+      var copyBtn = document.getElementById('copyEmailBtn');
+      if(emailLink){
+        emailLink.addEventListener('click', function(e){
+          e.preventDefault();
+          try{
+            window.location.href = 'mailto:'+email+'?subject=Question%20about%20training';
+            setTimeout(function(){
+              if(navigator.clipboard){ navigator.clipboard.writeText(email); }
+            }, 800);
+          }catch(err){ /* ignore */ }
+        });
+      }
+      if(copyBtn){
+        copyBtn.addEventListener('click', function(){
+          if(navigator.clipboard){ navigator.clipboard.writeText(email); }
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function(){ copyBtn.textContent = 'Copy email'; }, 1800);
+        });
+      }
+      var markBtn = document.getElementById('markSubmitted');
+      if(markBtn){
+        markBtn.addEventListener('click', function(){
+          var t = document.getElementById('thankyou-note');
+          if(t){ t.style.display = 'block'; t.scrollIntoView({behavior:'smooth', block:'start'}); }
+        });
+      }
+    })();
   </script>
 </body>
 </html>
