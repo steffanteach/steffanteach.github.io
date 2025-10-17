@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Academic Tutoring | Steff Jones</title>
-  <meta name="description" content="Academic tutoring in math, science, writing, and study skills. 1-on-1 Zoom, tailored plans, and progress check-ins." />
+  <meta name="description" content="Academic tutoring in math, science, writing, and study skills. 1‑on‑1 Zoom consults, tailored plans, and progress check‑ins." />
   <meta name="theme-color" content="#111111" />
   <style>
     :root{
@@ -20,6 +20,7 @@
                   var(--bg);
       color:var(--text);
     }
+
     .wrap{ width:min(1100px, 100%); margin: 0 auto; padding: 28px 20px 40px; }
 
     header{ text-align:center; padding: 16px 0 8px; }
@@ -33,48 +34,113 @@
     .btn.secondary{ background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.0)); color:var(--text); }
     .btn:hover{ transform: translateY(-1px) scale(1.02); border-color: rgba(192,192,192,.6); box-shadow: 0 0 18px rgba(192,192,192,.28), var(--shadow-lg); }
 
+    /* Cards grid */
     .grid{ margin-top:28px; display:grid; gap:18px; grid-template-columns: repeat(1, minmax(0, 1fr)); }
     @media (min-width: 760px){ .grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
 
     .card{ position:relative; background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 20px 20px 22px; box-shadow: var(--shadow-lg); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease; }
+    .card::after{ content:""; position:absolute; inset:-2px; border-radius: calc(var(--radius) + 2px); background: radial-gradient(60% 60% at 50% 0%, rgba(192,192,192,.45), transparent 70%), radial-gradient(80% 80% at 50% 100%, rgba(192,192,192,.3), transparent 70%); filter: blur(14px); opacity:0; transition: opacity .25s ease; z-index:-1; }
     .card:hover{ transform: translateY(-2px) scale(1.02); border-color: rgba(192,192,192,.45); background: linear-gradient(180deg, rgba(224,17,43,.05), rgba(255,255,255,.02)), var(--card); box-shadow: 0 0 20px rgba(192,192,192,.3), var(--shadow-lg); }
-
+    .card:hover::after{ opacity:.85; }
     .badge{ display:inline-flex; align-items:center; gap:8px; font-weight:700; color: var(--text); font-size: 12px; background: rgba(192,192,192,.14); border:1px solid rgba(192,192,192,.45); padding: 6px 10px; border-radius: 999px; margin-bottom: 12px; }
     .dot{ width:8px; height:8px; border-radius:50%; background: var(--accent); box-shadow: 0 0 10px rgba(224,17,43,.8), 0 0 25px rgba(224,17,43,.35); }
+    .card h3{ margin:6px 0 8px; font-size: 20px; color: var(--text); text-shadow: 0 0 6px rgba(192,192,192,.15); }
+    .card p{ margin:0; color: var(--muted); line-height:1.55; font-size: 15px; }
+    .card ul{ margin: 10px 0 0 18px; color: var(--muted); }
+
+    /* Section titles */
     .section-title{ text-align:center; margin: 40px 0 8px; font-weight:800; color: var(--silver); text-shadow: 0 0 8px rgba(192,192,192,.3); font-size: clamp(18px, 3.4vw, 26px); }
 
-    .form{ display:grid; gap:12px; max-width:800px; margin: 8px auto 0; }
-    .field{ display:grid; gap:6px; }
-    label{ font-weight:700; font-size:14px; color:var(--text); }
-    input, textarea, select{ background:#0f0f14; color:var(--text); border:1px solid rgba(192,192,192,.25); border-radius:12px; padding:10px 12px; font-size:15px; }
-    textarea{ min-height:100px; resize:vertical; }
+    /* Process */
+    .process{ display:grid; gap:16px; grid-template-columns: repeat(1, minmax(0,1fr)); margin-top: 14px; }
+    @media (min-width: 760px){ .process{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    .step{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow-lg); }
+    .step .kicker{ font-size:12px; color: var(--silver); letter-spacing:.14em; text-transform:uppercase; }
+    .step h4{ margin:6px 0; font-size:18px; }
+    .step p{ margin:0; color: var(--muted); line-height:1.6; }
+
+    /* Embeds */
+    .embed{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 12px; box-shadow: var(--shadow-lg); }
+    .embed iframe{ width:100%; border:0; height: 760px; border-radius: calc(var(--radius) - 6px); }
+
+    details{ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--card); border:1px solid rgba(192,192,192,.2); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow-lg); }
+    summary{ cursor:pointer; font-weight:700; }
+    details + details{ margin-top:10px; }
 
     footer{ text-align:center; margin: 36px 0 12px; color: var(--muted); font-size: 13px; border-top: 1px solid rgba(192,192,192,.15); padding-top: 12px; }
   </style>
+  <!-- Calendly embed -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
-  <main class="wrap">
+  <main class="wrap" role="main">
     <header>
       <div class="eyebrow">Academic Tutoring</div>
       <h1>Clarity. Confidence. Consistency.</h1>
-      <p class="subtitle">I’m <strong>Steff Jones</strong> — an engineer, educator, and D1 400m athlete who helps students make sense of challenging material through structure and motivation. Whether it’s math, science, writing, or study skills, we’ll meet 1-on-1 over Zoom and build a plan around your needs.</p>
+      <p class="subtitle">I’m <strong>Steff Jones</strong> — an engineer, educator, and D1 400m athlete who loves making tough topics click. From math and science to writing and history, I help students build understanding and momentum with structured, supportive sessions over Zoom.</p>
       <div class="cta-bar">
-        <a class="btn primary" href="#book">Book a Consult</a>
-        <a class="btn secondary" href="/">← Back to Home</a>
+        <a class="btn primary" href="#book">Book a 1‑on‑1 Consult</a>
+        <a class="btn secondary" href="/" aria-label="Back to home">← Back to Home</a>
       </div>
     </header>
 
-    <!-- Offerings (restored) -->
+    <!-- Offerings (match training layout) -->
     <section aria-label="Tutoring offerings" class="grid">
       <article class="card">
         <span class="badge"><span class="dot"></span> STEM</span>
         <h3>Math &amp; Science</h3>
-        <p>Algebra → Calculus, Physics, Chemistry, problem solving. Concept-first explanations + practice that sticks.</p>
+        <p>Algebra → Calculus, Physics, Chemistry, problem solving. Concept‑first explanations + practice that sticks.</p>
         <ul>
           <li>Targeted problem walkthroughs &amp; strategies</li>
-          <li>F
+          <li>Formula intuition, units, and checking</li>
+          <li>Weekly goals with measurable checkpoints</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Humanities</span>
+        <h3>Writing &amp; History</h3>
+        <p>Clear thesis building, structure, evidence, and style. From outlines to polished drafts with feedback.</p>
+        <ul>
+          <li>Argument craft &amp; organization</li>
+          <li>Concise, active prose; citations support</li>
+          <li>Revision plans &amp; rubric alignment</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Study Skills</span>
+        <h3>Study Skills &amp; Exam Prep</h3>
+        <p>Executive function, spaced repetition, test strategies, and planning that fits your schedule.</p>
+        <ul>
+          <li>Weekly study plan &amp; task breakdowns</li>
+          <li>Active recall &amp; practice test routines</li>
+          <li>Exam‑week strategy &amp; stress tools</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Process (match training layout) -->
+    <h2 class="section-title">How it works</h2>
+    <section class="process" aria-label="Process">
+      <div class="step">
+        <div class="kicker">Step 1</div>
+        <h4>1‑on‑1 Zoom consult</h4>
+        <p>We’ll talk goals, classes, current challenges, and schedule. Share assignments or past tests if helpful.</p>
+      </div>
+      <div class="step">
+        <div class="kicker">Step 2</div>
+        <h4>Personalized weekly plan</h4>
+        <p>Session focus, practice sets, checkpoints, and resources — all aligned to your syllabus and timeline.</p>
+      </div>
+      <div class="step">
+        <div class="kicker">Step 3</div>
+        <h4>Progress check‑ins</h4>
+        <p>Regular feedback and adjustments so you keep improving and feel confident going into assessments.</p>
+      </div>
+    </section>
+
+    <!-- Booking & Intake (match training layout) -->
+    <h2 id="book" class="section-title">Schedule & Intake</h2>
     <section class="embed" aria-label="Calendly inline scheduler" style="margin-top:10px;">
       <div class="calendly-inline-widget" data-url="https://calendly.com/steffjonesfit/30-min-gym-program-consultation" style="min-width:320px;height:760px;"></div>
       <noscript>
@@ -82,67 +148,68 @@
       </noscript>
     </section>
 
-    <div id="scheduled-note" class="card" style="display:none; margin-top:12px;">
+    <div id="scheduled-note" class="embed" style="display:none; margin-top:12px;">
       <p style="margin:0; color:var(--text); font-weight:700;">✅ Booked! Next step:</p>
-      <p style="margin:.4rem 0 0; color:var(--muted);">Please complete the short intake below so I can prep materials for our first session.</p>
-      <p style="margin:.4rem 0 0; color:var(--muted);">Questions? <a href="#" id="emailLink" style="color:#fff; text-decoration:underline;">Email me</a> · <button id="copyEmailBtn" type="button" style="background:none;border:none;color:#c0c0c0;text-decoration:underline;cursor:pointer;">Copy email</button></p>
+      <p style="margin:.4rem 0 0; color:var(--muted);">Please complete the intake below so I can prep materials for our first session.</p>
     </div>
 
-    <h2 class="section-title">Tutoring Intake</h2>
-    <p style="text-align:center; color:var(--muted); margin:6px 0 10px;">Submitting this form will <strong>open your email app</strong> to send your answers to <a href="#" id="emailLinkTop" style="color:#fff; text-decoration:underline;">steffdjones@gmail.com</a>. If your device doesn’t have an email app configured, your answers will be <strong>copied to your clipboard</strong> so you can paste them into an email.</p>
+    <h2 class="section-title" id="intake" style="margin-top:18px;">Tutoring Intake</h2>
+    <section class="embed" aria-label="Tutoring Intake">
+      <form id="intakeForm" class="form" style="display:grid; gap:12px; max-width:800px; margin: 0 auto;">
+        <div class="field">
+          <label for="name">Student name</label>
+          <input id="name" name="name" required />
+        </div>
+        <div class="field">
+          <label for="grade">Grade / level</label>
+          <input id="grade" name="grade" />
+        </div>
+        <div class="field">
+          <label for="topic">Desired topic</label>
+          <input id="topic" name="topic" placeholder="e.g., Algebra II, Essay Writing, Chemistry" />
+        </div>
+        <div class="field">
+          <label for="goals">Goals & upcoming deadlines</label>
+          <textarea id="goals" name="goals"></textarea>
+        </div>
+        <div class="field">
+          <label for="availability">Weekly availability & time zone</label>
+          <textarea id="availability" name="availability"></textarea>
+        </div>
+        <div class="field">
+          <button class="btn primary" type="submit">Submit intake</button>
+          <span style="color:var(--muted); font-size:14px;">This will open your email app; if it doesn't, your answers will be copied so you can paste into an email to <strong>steffdjones@gmail.com</strong>.</span>
+        </div>
+      </form>
+    </section>
 
-    <form id="intakeForm" class="form">
-      <div class="field">
-        <label for="name">Student Name</label>
-        <input id="name" name="name" required />
-      </div>
-      <div class="field">
-        <label for="grade">Grade / Level</label>
-        <input id="grade" name="grade" />
-      </div>
-      <div class="field">
-        <label for="topic">Desired Topic</label>
-        <input id="topic" name="topic" placeholder="e.g., Algebra II, Essay Writing, Chemistry" />
-      </div>
-      <div class="field">
-        <label for="goals">Goals & Upcoming Deadlines</label>
-        <textarea id="goals" name="goals"></textarea>
-      </div>
-      <div class="field">
-        <label for="availability">Availability & Time Zone</label>
-        <textarea id="availability" name="availability"></textarea>
-      </div>
-      <div class="field">
-        <button class="btn primary" type="submit">Submit Intake</button>
-        <a class="btn secondary" href="mailto:steffdjones@gmail.com?subject=Tutoring%20Question" style="display:inline-flex; align-items:center;">Or email me directly</a>
-      </div>
-    </form>
-
-    <div id="thankyou-note" class="card" style="display:none; margin-top:12px; text-align:center;">
+    <div id="thankyou-note" class="embed" style="display:none; margin-top:12px; text-align:center;">
       <p style="margin:0; color:var(--text); font-weight:700;">🙌 Thanks — you’re all set!</p>
-      <p style="margin:.4rem 0 0; color:var(--muted);">I’ll confirm your session and send resources within 24 hours.</p>
+      <p style="margin:.4rem 0 0; color:var(--muted);">I’ll confirm your session and send any prep materials.</p>
     </div>
+
+    <!-- FAQs -->
+    <h2 id="faq" class="section-title">FAQs</h2>
+    <section aria-label="FAQ" style="max-width:900px; margin: 10px auto 0; display:grid; gap:10px;">
+      <details>
+        <summary>Do you tutor remotely?</summary>
+        <p>Yes — all sessions are on Zoom. I’ll share screens, annotate solutions, and provide follow‑up resources.</p>
+      </details>
+      <details>
+        <summary>How long are sessions?</summary>
+        <p>Typically 60 minutes. We’ll adapt based on goals and attention — longer blocks for projects or exam prep as needed.</p>
+      </details>
+      <details>
+        <summary>Can you help with study skills?</summary>
+        <p>Absolutely. I can build weekly study plans, teach active‑recall methods, and set up checkpoint routines that fit your schedule.</p>
+      </details>
+    </section>
 
     <footer>
       <p>&copy; <span id="year"></span> Steff Jones. <a href="/" style="color:inherit;">Home</a></p>
     </footer>
   </main>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const form = document.getElementById('intakeForm');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const details = `Tutoring Intake\nName: ${data.get('name')}\nGrade: ${data.get('grade')}\nDesired Topic: ${data.get('topic')}\nGoals: ${data.get('goals')}\nAvailability: ${data.get('availability')}`;
-      const mailto = `mailto:steffdjones@gmail.com?subject=Tutoring%20Intake%20-%20${encodeURIComponent(data.get('name'))}&body=${encodeURIComponent(details)}`;
-      try { window.location.href = mailto; } catch(err){}
-      if(navigator.clipboard){ navigator.clipboard.writeText(details); }
-      document.getElementById('thankyou-note').style.display = 'block';
-      document.getElementById('thankyou-note').scrollIntoView({behavior:'smooth'});
-      form.reset();
-    });
-    </script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -154,32 +221,18 @@
         var data = e.data; if(typeof data === 'string'){ try{ data = JSON.parse(data); }catch(err){} }
         if(data && data.event === 'calendly.event_scheduled'){
           var note = document.getElementById('scheduled-note'); if(note){ note.style.display = 'block'; }
-          var intakeTitle = document.querySelector('h2.section-title + p + form') || document.getElementById('intakeForm');
-          if(intakeTitle){ intakeTitle.scrollIntoView({behavior:'smooth', block:'start'}); }
+          var intake = document.getElementById('intake'); if(intake){ intake.scrollIntoView({behavior:'smooth', block:'start'}); }
         }
       }catch(err){}
     });
 
-    // Email helpers (top and in scheduled note)
+    // Intake form → compose email fallback + thank you
     (function(){
-      var email = 'steffdjones@gmail.com';
-      function attach(id){
-        var el = document.getElementById(id); if(!el) return;
-        el.addEventListener('click', function(e){ e.preventDefault(); try{ window.location.href = 'mailto:'+email+'?subject=Tutoring%20Question'; setTimeout(function(){ if(navigator.clipboard){ navigator.clipboard.writeText(email); } }, 800);}catch(err){} });
-      }
-      attach('emailLink');
-      attach('emailLinkTop');
-      var copyBtn = document.getElementById('copyEmailBtn');
-      if(copyBtn){ copyBtn.addEventListener('click', function(){ if(navigator.clipboard){ navigator.clipboard.writeText(email); } copyBtn.textContent='Copied!'; setTimeout(function(){ copyBtn.textContent='Copy email'; },1800); }); }
-    })();
-
-    // Intake form → compose email + clipboard + thank you
-    (function(){
-      var form = document.getElementById('intakeForm');
-      if(!form) return;
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        var v = new FormData(form);
+      var f = document.getElementById('intakeForm');
+      if(!f) return;
+      f.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        var v = new FormData(f);
         var lines = [
           'Tutoring Intake',
           'Name: '+(v.get('name')||''),
@@ -187,13 +240,12 @@
           'Desired Topic: '+(v.get('topic')||''),
           'Goals/Deadlines: '+(v.get('goals')||''),
           'Availability/Timezone: '+(v.get('availability')||'')
-        ].join('
-');
+        ].join('\n');
         var mailto = 'mailto:steffdjones@gmail.com?subject=' + encodeURIComponent('Tutoring Intake — '+(v.get('name')||'')) + '&body=' + encodeURIComponent(lines);
         try{ window.location.href = mailto; }catch(err){}
         if(navigator.clipboard){ navigator.clipboard.writeText(lines); }
         var t = document.getElementById('thankyou-note'); if(t){ t.style.display='block'; t.scrollIntoView({behavior:'smooth', block:'start'}); }
-        form.reset();
+        f.reset();
       });
     })();
   </script>
