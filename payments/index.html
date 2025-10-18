@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payments | Teaching with Steffan Jones</title>
+  <meta name="theme-color" content="#111111" />
+  <style>
+    :root{
+      --bg:#0c0c0f; --text:#f6f6f6; --muted:#b0b0b0; --accent:#e0112b;
+      --card:#141419; --silver:#c0c0c0; --radius:18px; --shadow-lg:0 20px 40px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+
+    /* Unified background — no seams */
+    body{
+      margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text); background-color:#0b0b0e; position:relative; min-height:100%;
+      padding:32px;
+    }
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background-image:
+        radial-gradient(1400px 900px at 80% -10%, rgba(224,17,43,.10), transparent 70%),
+        radial-gradient(1100px 800px at -15% 110%, rgba(224,17,43,.06), transparent 75%),
+        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.08) 100%);
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-position:80% -10%,-15% 110%,center bottom;
+      background-size:1400px 900px,1100px 800px,100% 55%;
+    }
+    @media (max-width:600px){
+      body::before{ position:absolute; height:100dvh; }
+      body{ padding:22px; }
+    }
+
+    .wrap{width:min(1200px,100%); margin:0 auto}
+    header{text-align:center; margin-bottom:22px}
+    h1{margin:0; font-size:clamp(28px,5vw,44px); font-weight:800; text-shadow:0 0 10px rgba(192,192,192,.2)}
+    .subtitle{margin:8px auto 0; color:var(--muted); max-width:900px; line-height:1.6; font-size:clamp(14px,2.2vw,18px)}
+
+    .section-title{margin:26px 0 10px; text-align:center; font-weight:800; color:var(--silver); text-shadow:0 0 8px rgba(192,192,192,.3); font-size:clamp(18px,3.4vw,26px)}
+
+    /* Cards */
+    .grid{display:grid; gap:18px; grid-template-columns:1fr; margin-top:10px}
+    @media(min-width:760px){ .grid{ grid-template-columns:repeat(3,minmax(0,1fr)) } }
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)),var(--card);
+      border:1px solid rgba(192,192,192,.2); border-radius:var(--radius);
+      padding:18px 18px 20px; box-shadow:var(--shadow-lg);
+      transition:transform .25s, box-shadow .25s, border-color .25s, background .25s
+    }
+    .card:hover{transform:translateY(-2px) scale(1.02); border-color:rgba(224,17,43,.45);
+      background:linear-gradient(180deg,rgba(224,17,43,.05),rgba(255,255,255,.02)),var(--card)}
+    .badge{display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--text); font-size:12px;
+      background:rgba(192,192,192,.14); border:1px solid rgba(192,192,192,.45); padding:6px 10px; border-radius:999px; margin-bottom:12px}
+    .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px rgba(224,17,43,.8),0 0 25px rgba(224,17,43,.35)}
+    .card h3{margin:4px 0 8px; font-size:20px}
+    .price{font-weight:800; font-size:20px; margin:0 0 8px}
+    .muted{color:var(--muted); font-size:14px; margin:0 0 10px}
+    .list{margin:8px 0 0 18px; color:var(--muted)}
+
+    /* Callouts & payment options */
+    .callout{
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)),var(--card);
+      border:1px solid rgba(192,192,192,.2); border-radius:var(--radius);
+      padding:16px; box-shadow:var(--shadow-lg); max-width:1000px; margin:14px auto 0
+    }
+    .pay-grid{display:grid; gap:14px; grid-template-columns:1fr}
+    @media(min-width:760px){ .pay-grid{ grid-template-columns:repeat(3,minmax(0,1fr)) } }
+
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border-radius:999px; padding:12px 16px; text-decoration:none; font-weight:700; color:var(--text);
+      border:1px solid rgba(192,192,192,.35); background:linear-gradient(180deg,rgba(224,17,43,.14),rgba(255,255,255,.02));
+      box-shadow:var(--shadow-lg); transition:transform .2s, border-color .2s}
+    .btn:hover{transform:translateY(-1px) scale(1.02); border-color:rgba(192,192,192,.6)}
+    .inline{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+
+    code.clip{background:#0f0f14; border:1px solid rgba(192,192,192,.28); padding:6px 8px; border-radius:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:13px}
+    .copy{cursor:pointer; border:1px solid rgba(192,192,192,.35); padding:6px 10px; border-radius:8px; background:rgba(255,255,255,.03)}
+    .copy:hover{border-color:rgba(192,192,192,.6)}
+
+    footer{text-align:center; margin:26px 0 8px; color:var(--muted); font-size:13px; border-top:1px solid rgba(192,192,192,.15); padding-top:12px}
+    .top-cta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:14px}
+    .back{color:inherit; text-decoration:none; border-bottom:1px dotted rgba(192,192,192,.5)}
+
+    /* Mobile readability */
+    @media (max-width:600px){
+      .subtitle{font-size:15px}
+      .price{font-size:18px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <header>
+      <h1>Payments</h1>
+      <p class="subtitle">Choose your service below, then pay using Venmo (US) or a simple bank transfer (UK) — or use Wise for either currency. You’ll receive a receipt by email.</p>
+      <div class="top-cta">
+        <a class="back" href="/">← Back to Home</a>
+      </div>
+    </header>
+
+    <!-- Pricing sections -->
+    <h2 class="section-title">Tutoring</h2>
+    <section class="grid">
+      <article class="card">
+        <span class="badge"><span class="dot"></span> First Session</span>
+        <h3>Intro Rate (new students)</h3>
+        <p class="price">$30 (£22) for the first 2 hours</p>
+        <p class="muted">Covers goals, diagnostics, and a starter plan.</p>
+        <ul class="list">
+          <li>Math, science, writing, study skills</li>
+          <li>Zoom-based, materials provided</li>
+          <li>Flexible scheduling</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Ongoing</span>
+        <h3>Standard Session</h3>
+        <p class="price">$55 (£40) / hour</p>
+        <p class="muted">Targeted instruction + practice sets + feedback.</p>
+        <ul class="list">
+          <li>Progress tracking & check-ins</li>
+          <li>Homework help as needed</li>
+          <li>Session summary after each meeting</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Package</span>
+        <h3>4-Session Bundle</h3>
+        <p class="price">$200 total</p>
+        <p class="muted">Save vs. single sessions. Expires in 90 days.</p>
+        <ul class="list">
+          <li>4 × 60 min sessions</li>
+          <li>Priority scheduling</li>
+          <li>Progress plan included</li>
+        </ul>
+      </article>
+    </section>
+
+    <h2 class="section-title">College / University Guidance</h2>
+    <section class="grid">
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Baseline</span>
+        <h3>Planning & Strategy</h3>
+        <p class="price">$20 (£15) / hour</p>
+        <p class="muted">School list, timelines, and application planning.</p>
+        <ul class="list">
+          <li>Reach/Target/Safety balance</li>
+          <li>Milestones and accountability</li>
+          <li>Testing plan + recs strategy</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Essays</span>
+        <h3>Essay Support</h3>
+        <p class="price">+ $40 (£30) / hour add-on</p>
+        <p class="muted">Brainstorm → structure → drafts → polish (authentic voice).</p>
+        <ul class="list">
+          <li>Personal statement & supplements</li>
+          <li>Turnaround time agreed upfront</li>
+          <li>Documented feedback</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Testing</span>
+        <h3>SAT / ACT Help</h3>
+        <p class="price">+ $25 (£18.50) / hour add-on</p>
+        <p class="muted">Targeted practice, review, and score-focused pacing.</p>
+        <ul class="list">
+          <li>Custom practice sets</li>
+          <li>Timing strategies</li>
+          <li>Weekly checkpoints</li>
+        </ul>
+      </article>
+    </section>
+
+    <h2 class="section-title">Athlete Training</h2>
+    <section class="grid">
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Track</span>
+        <h3>Track Only</h3>
+        <p class="price">$40 (£30) / month</p>
+        <p class="muted">Sprint mechanics, starts, posture, and speed work.</p>
+        <ul class="list">
+          <li>Weekly speed/tempo/technical sessions</li>
+          <li>Video feedback as needed</li>
+          <li>Targets: splits, RPE, volume</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Gym</span>
+        <h3>Gym Only</h3>
+        <p class="price">$40 (£30) / month</p>
+        <p class="muted">Strength & power: block periodization + durability.</p>
+        <ul class="list">
+          <li>Accessory work & micro-doses</li>
+          <li>Movement quality focus</li>
+          <li>Season-matched loads</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge"><span class="dot"></span> Combo</span>
+        <h3>Track + Gym Combo</h3>
+        <p class="price">$68 (£50) / month</p>
+        <p class="muted">Discounted combined session for balanced development.</p>
+        <ul class="list">
+          <li>Acceleration + lifts in one block</li>
+          <li>Recovery & warm-ups included</li>
+          <li>Weekly adjustments</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Payment options -->
+    <h2 class="section-title">How to Pay</h2>
+    <section class="pay-grid">
+      <article class="callout">
+        <h3 style="margin:0 0 8px">🇺🇸 US Customers — Venmo</h3>
+        <p class="muted" style="margin:0 0 10px">Pay for the session or package that fits. Add a note with your name + service (e.g., “Tutoring – Standard 1 hr”).</p>
+        <div class="inline">
+          <!-- Replace with your real Venmo handle -->
+          <a class="btn" href="https://venmo.com/u/steffanjones" target="_blank" rel="noopener">Open Venmo</a>
+          <code class="clip">@steffanjones</code>
+          <button class="copy" data-copy="@steffanjones">Copy handle</button>
+        </div>
+      </article>
+
+      <article class="callout">
+        <h3 style="margin:0 0 8px">🇬🇧 UK Customers — Bank Transfer</h3>
+        <p class="muted" style="margin:0 0 10px">Send via Faster Payments. Use your name + service as the reference.</p>
+        <div class="inline">
+          <!-- Replace with your actual details -->
+          <code class="clip">Sort Code: 09-01-29</code><button class="copy" data-copy="12-34-56">Copy</button>
+          <code class="clip">Account: 26630597</code><button class="copy" data-copy="12345678">Copy</button>
+          <code class="clip">Name: Steffan Jones</code><button class="copy" data-copy="Steffan Jones">Copy</button>
+        </div>
+      </article>
+
+      <article class="callout">
+        <h3 style="margin:0 0 8px">🌍 Wise (USD/GBP)</h3>
+        <p class="muted" style="margin:0 0 10px">Prefer Wise? Use the local account details below, or share your preferred currency and I’ll send a Wise request.</p>
+        <div class="inline">
+          <!-- Replace with your Wise details -->
+          <code class="clip">@steffandylanj</code>
+          <button class="copy" data-copy="@steffandylanj">Copy</button>
+        </div>
+      </article>
+    </section>
+
+    <div class="callout" style="margin-top:14px">
+      <p class="muted" style="margin:0">
+        <strong>Notes:</strong> Please complete payment before your session. If paying a package, we’ll log usage transparently.
+        Cancellations with &ge;24 hours’ notice are fully refundable; within 24 hours, sessions may be rescheduled at my discretion.
+      </p>
+    </div>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Steff Jones. <a href="/" style="color:inherit">Home</a></p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // copy-to-clipboard for handles & bank details
+    document.querySelectorAll('.copy').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const txt = btn.getAttribute('data-copy');
+        try{
+          await navigator.clipboard.writeText(txt);
+          const old = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(()=>btn.textContent=old, 1200);
+        }catch(_){
+          alert('Copy failed. Please copy manually: ' + txt);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
