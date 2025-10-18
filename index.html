@@ -79,48 +79,64 @@
 
     footer{ text-align:center; margin-top:28px; color:var(--muted); font-size:13px; border-top:1px solid rgba(192,192,192,.15); padding-top:12px; }
 
-    /* === Credentials / affiliations (conveyor belt • 4×, bigger) === */
-    .logos{
-      margin:16px auto 12px; padding:12px 0;
-      border-top:1px solid rgba(192,192,192,.18);
-      border-bottom:1px solid rgba(192,192,192,.18);
-    }
-    .logo-viewport{ overflow:hidden; max-width:1000px; margin:0 auto; }
-    .logo-track{
-      display:flex; align-items:center; gap:54px; padding:10px 6px;
-      width:max-content;                     /* measure real width */
-      animation:scroll-logos 50s linear infinite;  /* smooth drift */
-    }
-    .logo-track:hover{ animation-play-state:paused; }
-    
-    /* Bigger default logo size */
-    .logo-item img{
-      height:42px; max-width:220px; width:auto; object-fit:contain;
-      transition:transform .2s ease, opacity .2s ease;
-      opacity:.96;
-    }
-    
-    /* Gentle per-brand balancing (tweak as you like) */
-    .logo-item img[alt="Seren Network"], .logo-item img[alt="Seren Academy"]{ height:36px; }
-    .logo-item img[alt="Welsh Athletics"]{ height:38px; }
-    .logo-item img[alt="British Athletics"]{ height:40px; }
-    .logo-item img[alt="Harvard University"]{ height:40px; }
-    .logo-item img[alt="Loughborough College"]{ height:40px; }
-    
-    /* Seamless scroll: 4 copies => move one-quarter width */
-    @keyframes scroll-logos{
-      from{ transform:translateX(0); }
-      to{   transform:translateX(-25%); }   /* exactly one segment of 4 */
-    }
-    
-    /* Mobile */
-    @media (max-width:480px){
-      .logo-track{ gap:36px; animation-duration:38s; }
-      .logo-item img{ height:32px; }
-    }
-    
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce){ .logo-track{ animation:none; } }
+    /* === Credentials / affiliations (conveyor belt • 4×, hover-grow) === */
+      .logos{
+        margin:16px auto 12px; padding:12px 0;
+        border-top:1px solid rgba(192,192,192,.18);
+        border-bottom:1px solid rgba(192,192,192,.18);
+      }
+      .logo-viewport{ overflow:hidden; max-width:1000px; margin:0 auto; }
+      .logo-track{
+        display:flex; align-items:center; gap:54px; padding:10px 6px;
+        width:max-content;
+        animation:scroll-logos 50s linear infinite;
+      }
+      .logo-track:hover{ animation-play-state:paused; }
+      
+      /* Bigger base size */
+      .logo-item img{
+        height:44px;              /* ↑ overall size */
+        width:auto; max-width:240px; object-fit:contain;
+        transition:transform .18s ease, opacity .18s ease;
+        opacity:.96;
+      }
+      
+      /* Per-brand balancing */
+      .logo-item img[alt="Seren Network"],
+      .logo-item img[alt="Seren Academy"]{ height:40px; }   /* keep Seren as-is */
+      .logo-item img[alt="British Athletics"]{ height:46px; }
+      .logo-item img[alt="Welsh Athletics"]{ height:46px; }
+      .logo-item img[alt="Harvard University"]{ height:48px; }
+      .logo-item img[alt="Loughborough College"],
+      .logo-item img[alt="Loughborough University"]{
+        height:50px;                                  /* make this one clearly larger */
+        /* optional readability boost if your asset is faint: uncomment next line */
+        /* filter: contrast(1.1) brightness(1.1) saturate(1.05); */
+      }
+      
+      /* Hover grow (simple + reliable) */
+      .logo-item img:hover{
+        transform:scale(1.06);
+        opacity:1;
+      }
+      
+      /* Seamless scroll: 4 copies => move one quarter width */
+      @keyframes scroll-logos{
+        from{ transform:translateX(0); }
+        to{   transform:translateX(-25%); }
+      }
+      
+      /* Mobile */
+      @media (max-width:480px){
+        .logo-track{ gap:36px; animation-duration:38s; }
+        .logo-item img{ height:34px; max-width:200px; }
+        .logo-item img[alt="Seren Network"], .logo-item img[alt="Seren Academy"]{ height:30px; }
+        .logo-item img[alt="Loughborough College"], .logo-item img[alt="Loughborough University"]{ height:38px; }
+      }
+      
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce){ .logo-track{ animation:none; } }
+
 
   </style>
 </head>
@@ -200,34 +216,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script>
-    // GROW EFFECT — start
-    (function(){
-      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const track = document.querySelector('.logo-track');
-      if (!track) return;
-  
-      const items = Array.from(track.querySelectorAll('.logo-item img'));
-      const maxBoost = 0.14;          // ~14% growth at exact center
-      const falloff  = 260;           // larger = wider "sweet spot"
-  
-      function tick(){
-        const mid = window.innerWidth / 2;
-        items.forEach(img => {
-          const r = img.getBoundingClientRect();
-          const cx = r.left + r.width/2;
-          const d = Math.abs(cx - mid);
-          // Gaussian-ish falloff
-          const boost = Math.exp(-(d*d)/(2*falloff*falloff)) * maxBoost;
-          img.style.transform = `scale(${1+boost})`;
-          img.style.opacity = String(0.86 + boost*0.9);
-        });
-        requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    })();
-    // GROW EFFECT — end
   </script>
 </body>
 </html>
