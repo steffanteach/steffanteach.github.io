@@ -102,14 +102,17 @@
       }
       
       /* Per-brand balancing */
-      .logo-item img[alt="Seren Network"],
-      .logo-item img[alt="Seren Academy"]{ height:40px; }   /* keep Seren as-is */
-      .logo-item img[alt="British Athletics"]{ height:46px; }
-      .logo-item img[alt="Welsh Athletics"]{ height:46px; }
-      .logo-item img[alt="Harvard University"]{ height:48px; }
-      .logo-item img[alt="Loughborough College"],
-      .logo-item img[alt="Loughborough University"]{
-        height:50px;                                  /* make this one clearly larger */
+        .logo-item img[alt="Seren Network"],
+        .logo-item img[alt="Seren Academy"]{ height:40px; }
+        .logo-item img[alt="British Athletics"]{ height:46px; }
+        .logo-item img[alt="Welsh Athletics"]{ height:46px; }
+        .logo-item img[alt="Harvard University"]{ height:48px; }
+        .logo-item img[alt="Loughborough College"],
+        .logo-item img[alt="Loughborough University"]{
+          height:220px; /* ~5× larger */
+          transform:translateY(-6px); /* lift slightly so it stays visually aligned */
+          filter: contrast(1.15) brightness(1.15) saturate(1.1); /* optional readability boost */
+        }
         /* optional readability boost if your asset is faint: uncomment next line */
         /* filter: contrast(1.1) brightness(1.1) saturate(1.05); */
       }
