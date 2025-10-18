@@ -79,76 +79,49 @@
 
     footer{ text-align:center; margin-top:28px; color:var(--muted); font-size:13px; border-top:1px solid rgba(192,192,192,.15); padding-top:12px; }
 
-    /* === Credentials / affiliations (conveyor belt) === */
-    .logos {
-      margin: 16px auto 8px;
-      padding: 10px 0;
-      border-top: 1px solid rgba(192,192,192,.18);
-      border-bottom: 1px solid rgba(192,192,192,.18);
+    /* === Credentials / affiliations (conveyor belt • 4×, bigger) === */
+    .logos{
+      margin:16px auto 12px; padding:12px 0;
+      border-top:1px solid rgba(192,192,192,.18);
+      border-bottom:1px solid rgba(192,192,192,.18);
     }
-    .logo-viewport {
-      overflow: hidden;
-      max-width: 900px;
-      margin: 0 auto;
+    .logo-viewport{ overflow:hidden; max-width:1000px; margin:0 auto; }
+    .logo-track{
+      display:flex; align-items:center; gap:54px; padding:10px 6px;
+      width:max-content;                     /* measure real width */
+      animation:scroll-logos 50s linear infinite;  /* smooth drift */
     }
-    .logo-track {
-      display: flex;
-      align-items: center;
-      gap: 42px;
-      padding: 8px 6px;
-      animation: scroll-logos 40s linear infinite; /* slower + full loop */
-      width: max-content;
-    }
-    .logo-track:hover {
-      animation-play-state: paused;
+    .logo-track:hover{ animation-play-state:paused; }
+    
+    /* Bigger default logo size */
+    .logo-item img{
+      height:42px; max-width:220px; width:auto; object-fit:contain;
+      transition:transform .2s ease, opacity .2s ease;
+      opacity:.96;
     }
     
-    .logo-item img {
-      height: 32px;
-      max-width: 200px;
-      object-fit: contain;
-      opacity: 0.95;
-      transition: opacity .2s ease, transform .2s ease;
-    }
-    .logo-item img:hover {
-      opacity: 1;
-      transform: scale(1.03);
+    /* Gentle per-brand balancing (tweak as you like) */
+    .logo-item img[alt="Seren Network"], .logo-item img[alt="Seren Academy"]{ height:36px; }
+    .logo-item img[alt="Welsh Athletics"]{ height:38px; }
+    .logo-item img[alt="British Athletics"]{ height:40px; }
+    .logo-item img[alt="Harvard University"]{ height:40px; }
+    .logo-item img[alt="Loughborough College"]{ height:40px; }
+    
+    /* Seamless scroll: 4 copies => move one-quarter width */
+    @keyframes scroll-logos{
+      from{ transform:translateX(0); }
+      to{   transform:translateX(-25%); }   /* exactly one segment of 4 */
     }
     
-    /* Individual logo balancing */
-    .logo-item img[alt="Seren Network"],
-    .logo-item img[alt="Seren Academy"] {
-      height: 26px;
-    }
-    .logo-item img[alt="British Athletics"] {
-      height: 30px;
-    }
-    .logo-item img[alt="Harvard University"] {
-      height: 30px;
-    }
-    .logo-item img[alt="Loughborough College"] {
-      height: 30px;
-    }
-    .logo-item img[alt="Welsh Athletics"] {
-      height: 28px;
+    /* Mobile */
+    @media (max-width:480px){
+      .logo-track{ gap:36px; animation-duration:38s; }
+      .logo-item img{ height:32px; }
     }
     
-    /* Seamless horizontal scroll */
-    @keyframes scroll-logos {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); } /* 50% = half of duplicated row width */
-    }
-    
-    /* Mobile adjustments */
-    @media (max-width: 480px) {
-      .logo-track { gap: 28px; animation-duration: 28s; }
-      .logo-item img { height: 24px; }
-    }
-    
-    /* Accessibility: stop animation if user prefers reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .logo-track { animation: none; }
-    }
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){ .logo-track{ animation:none; } }
+
   </style>
 </head>
 <body>
@@ -166,14 +139,28 @@
     <section class="logos" aria-label="Credentials and affiliations">
       <div class="logo-viewport">
         <div class="logo-track">
-          <!-- Row 1 -->
+          <!-- Set A -->
           <div class="logo-item"><img src="assets/harvard.png" alt="Harvard University" loading="lazy"></div>
           <div class="logo-item"><img src="assets/welsh-athletics.png" alt="Welsh Athletics" loading="lazy"></div>
           <div class="logo-item"><img src="assets/loughborough.png" alt="Loughborough College" loading="lazy"></div>
           <div class="logo-item"><img src="assets/seren.png" alt="Seren Network" loading="lazy"></div>
           <div class="logo-item"><img src="assets/british-athletics.png" alt="British Athletics" loading="lazy"></div>
     
-          <!-- Row 2 (duplicate for seamless loop) -->
+          <!-- Set B -->
+          <div class="logo-item"><img src="assets/harvard.png" alt="Harvard University" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/welsh-athletics.png" alt="Welsh Athletics" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/loughborough.png" alt="Loughborough College" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/seren.png" alt="Seren Network" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/british-athletics.png" alt="British Athletics" aria-hidden="true"></div>
+    
+          <!-- Set C -->
+          <div class="logo-item"><img src="assets/harvard.png" alt="Harvard University" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/welsh-athletics.png" alt="Welsh Athletics" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/loughborough.png" alt="Loughborough College" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/seren.png" alt="Seren Network" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/british-athletics.png" alt="British Athletics" aria-hidden="true"></div>
+    
+          <!-- Set D -->
           <div class="logo-item"><img src="assets/harvard.png" alt="Harvard University" aria-hidden="true"></div>
           <div class="logo-item"><img src="assets/welsh-athletics.png" alt="Welsh Athletics" aria-hidden="true"></div>
           <div class="logo-item"><img src="assets/loughborough.png" alt="Loughborough College" aria-hidden="true"></div>
@@ -182,6 +169,7 @@
         </div>
       </div>
     </section>
+
 
     <h2 style="text-align:center; margin-top:40px; font-weight:700; color:var(--silver); text-shadow:0 0 8px rgba(192,192,192,.3);">Choose where you want to go</h2>
 
@@ -212,6 +200,34 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    // GROW EFFECT — start
+    (function(){
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const track = document.querySelector('.logo-track');
+      if (!track) return;
+  
+      const items = Array.from(track.querySelectorAll('.logo-item img'));
+      const maxBoost = 0.14;          // ~14% growth at exact center
+      const falloff  = 260;           // larger = wider "sweet spot"
+  
+      function tick(){
+        const mid = window.innerWidth / 2;
+        items.forEach(img => {
+          const r = img.getBoundingClientRect();
+          const cx = r.left + r.width/2;
+          const d = Math.abs(cx - mid);
+          // Gaussian-ish falloff
+          const boost = Math.exp(-(d*d)/(2*falloff*falloff)) * maxBoost;
+          img.style.transform = `scale(${1+boost})`;
+          img.style.opacity = String(0.86 + boost*0.9);
+        });
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+    // GROW EFFECT — end
   </script>
 </body>
 </html>
