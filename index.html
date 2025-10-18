@@ -78,6 +78,48 @@
     .card p{ margin:0; color:var(--muted); line-height:1.5; font-size:15px; }
 
     footer{ text-align:center; margin-top:28px; color:var(--muted); font-size:13px; border-top:1px solid rgba(192,192,192,.15); padding-top:12px; }
+
+    /* === Credentials / affiliations (conveyor belt) === */
+    .logos {
+      margin: 16px auto 8px;
+      padding: 10px 0;
+      border-top: 1px solid rgba(192,192,192,.18);
+      border-bottom: 1px solid rgba(192,192,192,.18);
+    }
+    .logo-viewport {
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .logo-track {
+      display: flex;
+      align-items: center;
+      gap: 42px;
+      padding: 8px 6px;
+      will-change: transform;
+      animation: scroll-logos 22s linear infinite;
+    }
+    .logo-track:hover { animation-play-state: paused; } /* pause on hover */
+
+    .logo-item img {
+      height: 34px;
+      max-width: 200px;
+      object-fit: contain;
+      filter: grayscale(100%) brightness(1.05) contrast(.9);
+      opacity: .92;
+      transition: opacity .2s ease, filter .2s ease;
+    }
+    .logo-item img:hover { filter: grayscale(0%) brightness(1.15); opacity: 1; }
+
+    @keyframes scroll-logos {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); } /* half width because we duplicate content */
+    }
+    @media (max-width: 480px) {
+      .logo-track { gap: 28px; }
+      .logo-item img { height: 28px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .logo-track { animation: none; } }
   </style>
 </head>
 <body>
@@ -89,6 +131,22 @@
 
     <section class="about">
       <p>Hi, I’m <strong>Steffan Jones</strong> — I'm an engineer, educator, and NCAA Division I athlete with a passion for helping others reach their potential. I have an engineering degree from Harvard, and have taught a wide array of subjects, from math and science, to history and writing. I have also trained with world-class coaches from all over the globe, and am eager to share what I have learned. Click on the box that suits your needs most, and let's schedule a time to meet!</p>
+    </section>
+
+    <!-- Credentials / affiliations -->
+    <section class="logos" aria-label="Credentials and affiliations">
+      <div class="logo-viewport">
+        <div class="logo-track">
+          <!-- Row 1 -->
+          <div class="logo-item"><img src="assets/harvard.svg" alt="Harvard University" loading="lazy"></div>
+          <div class="logo-item"><img src="assets/welsh-athletics.svg" alt="Welsh Athletics" loading="lazy"></div>
+          <div class="logo-item"><img src="assets/loughborough.svg" alt="Loughborough College" loading="lazy"></div>
+          <!-- Row 2 (duplicate for seamless loop) -->
+          <div class="logo-item"><img src="assets/harvard.svg" alt="Harvard University" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/welsh-athletics.svg" alt="Welsh Athletics" aria-hidden="true"></div>
+          <div class="logo-item"><img src="assets/loughborough.svg" alt="Loughborough College" aria-hidden="true"></div>
+        </div>
+      </div>
     </section>
 
     <h2 style="text-align:center; margin-top:40px; font-weight:700; color:var(--silver); text-shadow:0 0 8px rgba(192,192,192,.3);">Choose where you want to go</h2>
