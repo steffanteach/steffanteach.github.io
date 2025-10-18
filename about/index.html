@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Me | Steffan Jones</title>
+  <meta name="theme-color" content="#111111" />
+  <style>
+    :root{
+      --bg:#0c0c0f; --text:#f6f6f6; --muted:#b0b0b0; --accent:#e0112b;
+      --card:#141419; --silver:#c0c0c0; --radius:18px; --shadow-lg:0 20px 40px rgba(0,0,0,.35);
+    }
+    *{ box-sizing:border-box } html,body{ height:100% }
+
+    /* Seamless background (same as home) */
+    body{
+      margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text); background-color:#0b0b0e; position:relative; min-height:100%;
+      padding:32px;
+    }
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background-image:
+        radial-gradient(1400px 900px at 80% -10%, rgba(224,17,43,.10), transparent 70%),
+        radial-gradient(1100px 800px at -15% 110%, rgba(224,17,43,.06), transparent 75%),
+        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.08) 100%);
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-position:80% -10%,-15% 110%,center bottom;
+      background-size:1400px 900px,1100px 800px,100% 55%;
+    }
+    @media (max-width:600px){
+      body::before{ position:absolute; height:100dvh; }
+      body{ padding:22px; }
+    }
+
+    .wrap{ width:min(1200px,100%); margin:0 auto; }
+
+    header{ text-align:center; margin-bottom:22px; }
+    h1{ margin:0; font-size:clamp(28px,5vw,44px); font-weight:800; text-shadow:0 0 10px rgba(192,192,192,.2); }
+    .subtitle{ margin:8px auto 0; color:var(--muted); max-width:900px; line-height:1.6; font-size:clamp(14px,2.2vw,18px) }
+
+    /* Cardy content block */
+    .about{
+      max-width:1000px; margin:24px auto; padding:24px;
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)),var(--card);
+      border:1px solid rgba(192,192,192,.2); border-radius:var(--radius); box-shadow:var(--shadow-lg);
+    }
+
+    /* Top section: image + intro text */
+    .intro{
+      display:grid; gap:22px; align-items:center;
+      grid-template-columns: 1fr; 
+    }
+    @media (min-width:900px){
+      .intro{ grid-template-columns: 0.9fr 1.1fr; }
+    }
+    .portrait{
+      border-radius:16px; overflow:hidden; border:1px solid rgba(192,192,192,.22);
+      box-shadow:0 20px 40px rgba(0,0,0,.35);
+    }
+    .portrait img{ width:100%; height:auto; display:block; }
+
+    .intro h2{ margin:0 0 8px; font-size:clamp(20px,3.6vw,28px); }
+    .intro p{ margin:0 0 10px; color:var(--muted); line-height:1.7; font-size:17px; }
+
+    /* Highlights list */
+    .highlights{
+      margin-top:18px; padding-top:18px; border-top:1px solid rgba(192,192,192,.18);
+      display:grid; gap:14px; grid-template-columns: 1fr;
+    }
+    @media (min-width:800px){
+      .highlights{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+    }
+    .chip{
+      background:rgba(255,255,255,.02); border:1px solid rgba(192,192,192,.25);
+      border-radius:12px; padding:12px 14px; color:var(--silver); font-weight:600;
+      text-align:center;
+    }
+
+    /* Gallery */
+    .gallery{
+      margin-top:22px; display:grid; gap:14px;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+    @media (min-width:900px){
+      .gallery{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+    }
+    .shot{
+      position:relative; overflow:hidden; border-radius:16px;
+      border:1px solid rgba(192,192,192,.22); background:#0f0f14;
+      box-shadow:0 14px 28px rgba(0,0,0,.35);
+    }
+    .shot img{
+      width:100%; height:260px; object-fit:cover; display:block;
+      transition: transform .35s ease, opacity .35s ease;
+    }
+    .shot:hover img{ transform: scale(1.03); opacity:.96; }
+    .caption{
+      position:absolute; left:12px; bottom:10px; right:12px;
+      background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.55));
+      color:#eee; padding:28px 10px 8px; border-radius:12px;
+      font-size:13px; line-height:1.4;
+    }
+
+    .back{ display:inline-block; margin-top:14px; color:inherit; text-decoration:none; border-bottom:1px dotted rgba(192,192,192,.5); }
+
+    footer{ text-align:center; margin:26px 0 8px; color:var(--muted); font-size:13px; border-top:1px solid rgba(192,192,192,.15); padding-top:12px; }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main">
+    <header>
+      <h1>About Me</h1>
+      <p class="subtitle">Engineer • Educator • NCAA 400m Athlete</p>
+    </header>
+
+    <section class="about">
+      <div class="intro">
+        <!-- Left: portrait -->
+        <figure class="portrait">
+          <!-- Replace filenames with your images -->
+          <img src="/assets/steff-portrait.jpg" alt="Steffan Jones">
+        </figure>
+
+        <!-- Right: intro text -->
+        <div>
+          <h2>Hi, I’m Steffan Jones.</h2>
+          <p>
+            I’m an engineer, educator, and NCAA 400m athlete who loves helping people
+            turn challenging goals into clear, practical steps. I recently completed a degree in
+            <strong>Mechanical Engineering from Harvard</strong>, and I’ve tutored a wide range of subjects — from physics and calculus to writing and study skills.
+          </p>
+          <p>
+            On the track, I’ve spent the last decade training with world-class coaches, learning how to build speed, resilience, and smart routines that fit real life.
+            I bring that same structure into my tutoring and college guidance: we’ll set targets, build a plan, and track progress.
+          </p>
+
+          <div class="highlights">
+            <div class="chip">Harvard Engineering</div>
+            <div class="chip">Academic Tutor & Mentor</div>
+            <div class="chip">Sprint Mechanics & Strength</div>
+          </div>
+
+          <a class="back" href="/">← Back to Home</a>
+        </div>
+      </div>
+
+      <!-- Photo gallery -->
+      <div class="gallery">
+        <figure class="shot">
+          <img src="/assets/steff-track-1.jpg" alt="Steffan sprint training">
+          <figcaption class="caption">Acceleration & mechanics work</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="/assets/steff-gym-1.jpg" alt="Steffan in the gym">
+          <figcaption class="caption">Strength & power sessions</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="/assets/steff-tutoring-1.jpg" alt="Tutoring session">
+          <figcaption class="caption">1-on-1 tutoring & planning</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Steff Jones. <a href="/" style="color:inherit">Home</a></p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
