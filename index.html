@@ -160,6 +160,55 @@
 
     /* Alignment tweaks */
     .logos, .about { max-width: 1000px; }
+
+    /* ===== Mobile/iOS hardening for HOME only ===== */
+
+    /* 1) Background: avoid iOS seams/stutters by using absolute + 100dvh on small screens */
+    @media (max-width: 600px) {
+      body::before{
+        position:absolute;          /* instead of fixed on phones */
+        height:100dvh;              /* modern viewport unit; avoids address-bar jumps */
+      }
+    }
+    
+    /* 2) Layout: avoid over-centering that can cause cramped feel on phones */
+    @media (max-width: 600px) {
+      body{
+        display:block;              /* was grid+place-items:center; switch to normal flow */
+        padding:22px;               /* a bit tighter on mobile */
+      }
+      .wrap{ width:100%; }
+      header{ margin-bottom:24px; }
+      .about{
+        max-width: 1000px;          /* keep your wider copy */
+        line-height:1.6;
+        font-size:16px;
+        padding:18px 0;
+      }
+    }
+    
+    /* 3) Logo belt performance + sizing on phones */
+    @media (max-width: 600px) {
+      .logo-track{
+        gap:32px;
+        animation-duration: 36s;
+        will-change: transform;
+        transform: translateZ(0);           /* force compositor */
+      }
+      .logo-item img{
+        height:32px; max-width:200px;
+      }
+      /* keep Seren slightly smaller, bump Loughborough a hair for readability */
+      .logo-item img[alt="Seren Network"],
+      .logo-item img[alt="Seren Academy"]{ height:28px; }
+      .logo-item img[alt="Loughborough College"],
+      .logo-item img[alt="Loughborough University"]{ height:36px; }
+    }
+    
+    /* 4) Safety net: if user prefers reduced motion, keep the nice background but stop the belt */
+    @media (prefers-reduced-motion: reduce){
+      .logo-track{ animation: none; }
+    }
   </style>
 </head>
 <body>
