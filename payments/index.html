@@ -76,8 +76,37 @@
     .inline{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
 
     code.clip{background:#0f0f14; border:1px solid rgba(192,192,192,.28); padding:6px 8px; border-radius:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:13px}
-    .copy{cursor:pointer; border:1px solid rgba(192,192,192,.35); padding:6px 10px; border-radius:8px; background:rgba(255,255,255,.03)}
-    .copy:hover{border-color:rgba(192,192,192,.6)}
+    /* Copy buttons — sleek minimal style */
+    .copy {
+      cursor: pointer;
+      background: none;
+      border: 1px solid rgba(192,192,192,.25);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      padding: 4px 10px;
+      transition: all 0.25s ease;
+    }
+    
+    .copy:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(224,17,43,0.08);
+      transform: translateY(-1px);
+    }
+    
+    .copy:active {
+      transform: scale(0.97);
+      opacity: 0.9;
+    }
+    
+    /* When text changes to "Copied!" */
+    .copy.copied {
+      color: var(--silver);
+      border-color: rgba(224,17,43,.45);
+      background: rgba(224,17,43,.1);
+    }
 
     footer{text-align:center; margin:26px 0 8px; color:var(--muted); font-size:13px; border-top:1px solid rgba(192,192,192,.15); padding-top:12px}
     .top-cta{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:14px}
@@ -220,8 +249,8 @@
         <p class="muted" style="margin:0 0 10px">Pay for the session or package that fits. Add a note with your name + service (e.g., “Tutoring – Standard 1 hr”).</p>
         <div class="inline">
           <!-- Replace with your real Venmo handle -->
-          <a class="btn" href="https://venmo.com/u/steffanjones" target="_blank" rel="noopener">Open Venmo</a>
-          <code class="clip">@steffanjones</code>
+          <a class="btn" href="https://venmo.com/u/SteffanJones" target="_blank" rel="noopener">Open Venmo</a>
+          <code class="clip">@SteffanJones</code>
           <button class="copy" data-copy="@steffanjones">Copy handle</button>
         </div>
       </article>
@@ -231,8 +260,8 @@
         <p class="muted" style="margin:0 0 10px">Send via Faster Payments. Use your name + service as the reference.</p>
         <div class="inline">
           <!-- Replace with your actual details -->
-          <code class="clip">Sort Code: 09-01-29</code><button class="copy" data-copy="12-34-56">Copy</button>
-          <code class="clip">Account: 26630597</code><button class="copy" data-copy="12345678">Copy</button>
+          <code class="clip">Sort Code: 09-01-29</code><button class="copy" data-copy="09-01-29">Copy</button>
+          <code class="clip">Account: 26630597</code><button class="copy" data-copy="26630597">Copy</button>
           <code class="clip">Name: Steffan Jones</code><button class="copy" data-copy="Steffan Jones">Copy</button>
         </div>
       </article>
@@ -271,12 +300,17 @@
           await navigator.clipboard.writeText(txt);
           const old = btn.textContent;
           btn.textContent = 'Copied!';
-          setTimeout(()=>btn.textContent=old, 1200);
+          btn.classList.add('copied');
+          setTimeout(()=>{
+            btn.textContent = old;
+            btn.classList.remove('copied');
+          },1200);
         }catch(_){
           alert('Copy failed. Please copy manually: ' + txt);
         }
       });
     });
+
   </script>
 </body>
 </html>
