@@ -71,10 +71,18 @@
     @media (min-width:800px){
       .highlights{ grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
-    .chip{
-      background:rgba(255,255,255,.02); border:1px solid rgba(192,192,192,.25);
-      border-radius:12px; padding:12px 14px; color:var(--silver); font-weight:600;
-      text-align:center;
+    .chip {
+      display: flex;
+      align-items: center;       /* centers vertically */
+      justify-content: center;   /* centers horizontally */
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(192,192,192,.25);
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: var(--silver);
+      font-weight: 600;
+      text-align: center;
+      min-height: 48px;          /* keeps consistent size even if text wraps */
     }
 
     /* Gallery */
