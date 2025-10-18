@@ -96,30 +96,59 @@
       align-items: center;
       gap: 42px;
       padding: 8px 6px;
-      will-change: transform;
-      animation: scroll-logos 22s linear infinite;
+      animation: scroll-logos 40s linear infinite; /* slower + full loop */
+      width: max-content;
     }
-    .logo-track:hover { animation-play-state: paused; } /* pause on hover */
-
+    .logo-track:hover {
+      animation-play-state: paused;
+    }
+    
     .logo-item img {
-      height: 34px;
+      height: 32px;
       max-width: 200px;
       object-fit: contain;
-      filter: grayscale(100%) brightness(1.05) contrast(.9);
-      opacity: .92;
-      transition: opacity .2s ease, filter .2s ease;
+      opacity: 0.95;
+      transition: opacity .2s ease, transform .2s ease;
     }
-    .logo-item img:hover { filter: grayscale(0%) brightness(1.15); opacity: 1; }
-
+    .logo-item img:hover {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+    
+    /* Individual logo balancing */
+    .logo-item img[alt="Seren Network"],
+    .logo-item img[alt="Seren Academy"] {
+      height: 26px;
+    }
+    .logo-item img[alt="British Athletics"] {
+      height: 30px;
+    }
+    .logo-item img[alt="Harvard University"] {
+      height: 30px;
+    }
+    .logo-item img[alt="Loughborough College"] {
+      height: 30px;
+    }
+    .logo-item img[alt="Welsh Athletics"] {
+      height: 28px;
+    }
+    
+    /* Seamless horizontal scroll */
     @keyframes scroll-logos {
       from { transform: translateX(0); }
-      to   { transform: translateX(-50%); } /* half width because we duplicate content */
+      to   { transform: translateX(-50%); } /* 50% = half of duplicated row width */
     }
+    
+    /* Mobile adjustments */
     @media (max-width: 480px) {
-      .logo-track { gap: 28px; }
-      .logo-item img { height: 28px; }
+      .logo-track { gap: 28px; animation-duration: 28s; }
+      .logo-item img { height: 24px; }
     }
-    @media (prefers-reduced-motion: reduce) { .logo-track { animation: none; } }
+    
+    /* Accessibility: stop animation if user prefers reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .logo-track { animation: none; }
+    }
   </style>
 </head>
 <body>
