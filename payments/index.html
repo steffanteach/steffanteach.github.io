@@ -68,11 +68,35 @@
     .pay-grid{display:grid; gap:14px; grid-template-columns:1fr}
     @media(min-width:760px){ .pay-grid{ grid-template-columns:repeat(3,minmax(0,1fr)) } }
 
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      border-radius:999px; padding:12px 16px; text-decoration:none; font-weight:700; color:var(--text);
-      border:1px solid rgba(192,192,192,.35); background:linear-gradient(180deg,rgba(224,17,43,.14),rgba(255,255,255,.02));
-      box-shadow:var(--shadow-lg); transition:transform .2s, border-color .2s}
-    .btn:hover{transform:translateY(-1px) scale(1.02); border-color:rgba(192,192,192,.6)}
+    /* Buttons (refined, minimal, center-friendly) */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 999px;
+        padding: 10px 18px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        color: var(--text);
+        border: 1px solid rgba(224,17,43,.35);
+        background: rgba(224,17,43,.12);
+        box-shadow: 0 4px 12px rgba(0,0,0,.25);
+        transition: all .25s ease;
+      }
+      
+      .btn:hover {
+        background: rgba(224,17,43,.22);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(0,0,0,.35);
+        border-color: rgba(224,17,43,.6);
+      }
+      
+      .btn:active {
+        transform: scale(.98);
+        opacity: .9;
+      }
     .inline{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
 
     code.clip{background:#0f0f14; border:1px solid rgba(192,192,192,.28); padding:6px 8px; border-radius:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:13px}
@@ -116,6 +140,23 @@
     @media (max-width:600px){
       .subtitle{font-size:15px}
       .price{font-size:18px}
+    }
+
+    /* Center the payment blocks and contents */
+    .pay-grid {
+      display: grid;
+      gap: 18px;
+      justify-items: center;   /* centers all callouts */
+      text-align: center;
+    }
+    
+    .callout {
+      text-align: center;      /* ensures inner text centers too */
+      margin: 0 auto;
+    }
+    
+    .inline {
+      justify-content: center; /* center the copy buttons and code */
     }
   </style>
 </head>
@@ -183,7 +224,7 @@
       <article class="card">
         <span class="badge"><span class="dot"></span> Essays</span>
         <h3>Essay Support</h3>
-        <p class="price">+ $40 (£30) / hour add-on</p>
+        <p class="price">+ $20 (£15) / hour add-on</p>
         <p class="muted">Brainstorm → structure → drafts → polish (authentic voice).</p>
         <ul class="list">
           <li>Personal statement & supplements</li>
@@ -194,7 +235,7 @@
       <article class="card">
         <span class="badge"><span class="dot"></span> Testing</span>
         <h3>SAT / ACT Help</h3>
-        <p class="price">+ $25 (£18.50) / hour add-on</p>
+        <p class="price">+ $20 (£15) / hour add-on</p>
         <p class="muted">Targeted practice, review, and score-focused pacing.</p>
         <ul class="list">
           <li>Custom practice sets</li>
