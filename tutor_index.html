@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harvard-educated tutor offering personalized academic tutoring and university guidance in English and Welsh. All subjects, all ages, UK-based. Competitive rates with in-person and online options.">
+    <meta name="keywords" content="tutoring, tutor, Harvard, Welsh tutor, university guidance, UCAS, Oxbridge, academic tutoring, Neath tutor, Wales tutor">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <title>Steffan Jones | Harvard Tutor - Academic Tutoring & University Guidance</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --border-color: #e5e5e5;
+            --bg-white: #ffffff;
+            --bg-off-white: #fafafa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='blur'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='2'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23blur)' opacity='0.04'%3E%3Cpath d='M 20 80 Q 60 60, 100 80 Q 140 100, 180 80 Q 220 60, 260 80 Q 300 100, 340 80' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 0 200 Q 40 180, 80 200 Q 120 220, 160 200 Q 200 180, 240 200 Q 280 220, 320 200 Q 360 180, 400 200' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 60 320 Q 100 300, 140 320 Q 180 340, 220 320 Q 260 300, 300 320 Q 340 340, 380 320' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 400px 400px;
+        }
+
+        /* Navigation */
+        nav {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text-content {
+            max-width: 550px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .hero-images {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .hero-image-main {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: var(--bg-off-white);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .hero-image-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .credential-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .credential-images img {
+            width: 100%;
+            height: 80px;
+            object-fit: contain;
+            background: var(--bg-off-white);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+        }
+
+        /* Credentials */
+        .credentials {
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            margin-bottom: 6rem;
+            overflow: hidden;
+        }
+
+        .credentials-track {
+            display: flex;
+            gap: 4rem;
+            animation: scroll 30s linear infinite;
+            width: max-content;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .credential-item {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        /* Services Section */
+        .services {
+            max-width: 1100px;
+            margin: 0 auto 8rem;
+            padding: 0 2rem;
+        }
+
+        .services h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .service-card {
+            text-decoration: none;
+            color: var(--text-primary);
+            display: block;
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--border-color);
+            transition: opacity 0.2s ease;
+        }
+
+        .service-card:hover {
+            opacity: 0.7;
+        }
+
+        .service-number {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-off-white);
+            padding: 6rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .about p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-list {
+            list-style: none;
+            padding-top: 1rem;
+        }
+
+        .about-list li {
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .about-list strong {
+            font-weight: 600;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-list span {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            background: var(--bg-white);
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            #contact > div > div {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--bg-off-white);
+            padding: 5rem 2rem;
+        }
+
+        .testimonials-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-left: 3px solid var(--text-primary);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .testimonial-meta {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Success Metrics */
+        .metrics {
+            background: var(--text-primary);
+            color: var(--bg-white);
+            padding: 4rem 2rem;
+        }
+
+        .metrics-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .metric-item {
+            padding: 1rem;
+        }
+
+        .metric-number {
+            font-size: 3rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* FAQ Section */
+        .faq {
+            max-width: 900px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .faq h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .faq-item {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 999;
+            transition: transform 0.2s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-button svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--bg-off-white);
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: var(--text-primary);
+            color: var(--bg-white);
+            padding: 1rem 2rem;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Institutional Logos */
+        .logos-section {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logos-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .logo-item {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-item img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .logo-item img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Steffan Jones</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-text-content">
+                <h1>Engineering.<br>Education.<br>Excellence.</h1>
+                <p class="subtitle">Personalised Tutoring • University Guidance</p>
+                <p class="hero-text">Hi, I'm Steffan Jones. As a Harvard-educated Mechanical Engineer, I provide world-class academic expertise to help you reach your potential. Whether you're preparing for university or mastering a challenging subject, I'm here to guide you every step of the way.</p>
+            </div>
+            <div class="hero-images">
+                <div class="hero-image-main">
+                    <img src="assets/profile.jpg" alt="Steffan Jones" onerror="this.style.display='none'">
+                </div>
+                <div class="credential-images">
+                    <img src="assets/harvard.png" alt="Harvard" onerror="this.style.display='none'">
+                    <img src="assets/seren.png" alt="Seren Network" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials Carousel -->
+    <div class="credentials">
+        <div class="credentials-track">
+            <span class="credential-item">HARVARD UNIVERSITY</span>
+            <span class="credential-item">MECHANICAL ENGINEERING</span>
+            <span class="credential-item">BILINGUAL: ENGLISH & WELSH</span>
+            <span class="credential-item">SEREN NETWORK</span>
+            <span class="credential-item">LOUGHBOROUGH COLLEGE</span>
+            <span class="credential-item">10+ SUBJECTS TUTORED</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="credential-item">HARVARD UNIVERSITY</span>
+            <span class="credential-item">MECHANICAL ENGINEERING</span>
+            <span class="credential-item">BILINGUAL: ENGLISH & WELSH</span>
+            <span class="credential-item">SEREN NETWORK</span>
+            <span class="credential-item">LOUGHBOROUGH COLLEGE</span>
+            <span class="credential-item">10+ SUBJECTS TUTORED</span>
+        </div>
+    </div>
+
+    <!-- Institutional Logos -->
+    <section class="logos-section" style="display: none;">
+        <!-- Uncomment when you add logo images to assets/ folder
+        <div class="logos-container">
+            <div class="logo-item">
+                <img src="assets/harvard.png" alt="Harvard University" onerror="this.style.display='none'">
+            </div>
+            <div class="logo-item">
+                <img src="assets/seren.png" alt="Seren Network" onerror="this.style.display='none'">
+            </div>
+            <div class="logo-item">
+                <img src="assets/loughborough.png" alt="Loughborough College" onerror="this.style.display='none'">
+            </div>
+        </div>
+        -->
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Services</h2>
+        <div class="service-grid">
+            <a href="/tutoring.html" class="service-card">
+                <span class="service-number">01</span>
+                <h3>Academic Tutoring</h3>
+                <p>Specialized help in mathematics, science, writing, and more. Clear explanations, personalized strategies, and measurable progress tracking to help you master challenging subjects.</p>
+            </a>
+
+            <a href="/college.html" class="service-card">
+                <span class="service-number">02</span>
+                <h3>University Guidance</h3>
+                <p>Navigate the entire application process with confidence. From finding your dream school to crafting compelling essays and strategizing your timeline.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Success Metrics -->
+    <section class="metrics">
+        <div class="metrics-container">
+            <div class="metric-item">
+                <span class="metric-number">MIT</span>
+                <span class="metric-label">Interview Preparation</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-number">Oxford</span>
+                <span class="metric-label">Interview Guidance</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-number">Harvard</span>
+                <span class="metric-label">Admissions Interviewer</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-number">Seren</span>
+                <span class="metric-label">Program Mentor</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2>What Students Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Steffan helped me go from struggling with A-Level Maths to achieving an A*. His teaching style made complex concepts finally click. Couldn't have done it without him!"</p>
+                    <p class="testimonial-author">Sarah M.</p>
+                    <p class="testimonial-meta">A-Level Student, Cardiff</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The university guidance was invaluable. Steffan understood the Oxbridge application process inside and out, and helped me craft a personal statement that got me into Cambridge."</p>
+                    <p class="testimonial-author">James T.</p>
+                    <p class="testimonial-meta">Cambridge Undergraduate</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Being able to have sessions in Welsh made such a difference for my confidence. Steffan is patient, knowledgeable, and genuinely cares about his students' success."</p>
+                    <p class="testimonial-author">Megan P.</p>
+                    <p class="testimonial-meta">GCSE Student, Swansea</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div>
+                <h2>About Steffan</h2>
+                <p>My journey from a small town in Wales to Harvard wasn't straightforward, but it taught me something invaluable: with the right guidance and determination, anything is possible.</p>
+                <p>Growing up in Neath, I was the first in my family to attend university. I know what it's like to navigate the complex world of higher education without a roadmap. That's why I'm passionate about helping students—especially those from similar backgrounds—reach their full potential.</p>
+                <p>At Harvard, I didn't just earn my degree in Mechanical Engineering. I became deeply involved in the admissions process, conducting interviews for prospective students. I've also helped students prepare for MIT and Oxford interviews, and work hands-on with the Seren Network—Wales' programme supporting students aiming for top universities. Additionally, I mentor MIT students during their study abroad experiences.</p>
+                <p>Whether you're struggling with a specific subject, preparing for crucial exams, or dreaming of studying at a top university, I understand the process from both sides. Being bilingual in English and Welsh means I can support students in the language they're most comfortable with.</p>
+            </div>
+            <div>
+                <ul class="about-list">
+                    <li>
+                        <strong>Harvard Admissions Interviewer</strong>
+                        <span>Conduct interviews for prospective Harvard students—I know exactly what admissions committees look for</span>
+                    </li>
+                    <li>
+                        <strong>Elite Interview Preparation</strong>
+                        <span>Helped students successfully prepare for MIT and Oxford interviews with insider knowledge</span>
+                    </li>
+                    <li>
+                        <strong>Seren Network Mentor</strong>
+                        <span>Active involvement with Wales' premier programme for high-achieving students</span>
+                    </li>
+                    <li>
+                        <strong>Bilingual Support</strong>
+                        <span>Fluent instruction available in both English and Welsh</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3 class="faq-question">What subjects can you help with?</h3>
+            <p class="faq-answer">I can tutor any subject at any level—from primary school through A-Levels and beyond. Just provide me with the syllabus or worksheets, and I'll prepare tailored lessons. My specialties include Mathematics, Sciences (Physics, Chemistry, Biology), Engineering, Computer Science, and English/Welsh language and literature.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 class="faq-question">How do online sessions work?</h3>
+            <p class="faq-answer">Online sessions are conducted via video call (Zoom, Google Meet, or your preferred platform). I use a digital whiteboard for explaining concepts, and you can share your screen to show me work you're struggling with. It's just as effective as in-person tutoring!</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 class="faq-question">Do you offer in-person tutoring?</h3>
+            <p class="faq-answer">Yes! I offer in-person tutoring within 45 miles of Neath, Wales. Travel fees apply based on distance: 0-5 miles (free), 5-15 miles (+£5), 15-30 miles (+£10), 30-45 miles (+£15). Sessions can be at your home, a local library, or another agreed location.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 class="faq-question">How do I know if you're the right tutor for me?</h3>
+            <p class="faq-answer">Great question! I offer a free 15-minute consultation where we can discuss your goals, challenges, and learning style. This gives us both a chance to see if we're a good fit before committing to any sessions.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 class="faq-question">Can you help with both UK and US university applications?</h3>
+            <p class="faq-answer">Absolutely. Having gone through the US application process myself (and helped numerous students with UK applications), I'm familiar with both systems. I can guide you through UCAS, Common App, Oxbridge interviews, supplemental essays, and more.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 class="faq-question">What's your cancellation policy?</h3>
+            <p class="faq-answer">Sessions can be cancelled or rescheduled with at least 24 hours notice at no charge. Cancellations with less than 24 hours notice will forfeit that session. I understand life happens—just let me know as soon as possible!</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 class="faq-question">How does the referral discount work?</h3>
+            <p class="faq-answer">When someone books a session and mentions your name, you both receive 15% off your next session. There's no limit to how many people you can refer—share the success and save!</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 class="faq-question">Do you provide tutoring in Welsh?</h3>
+            <p class="faq-answer">Yes! I'm fluent in both English and Welsh, and I'm happy to conduct sessions in whichever language you're most comfortable with. This applies to all subjects and services.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section style="background: var(--bg-off-white); padding: 5rem 2rem;" id="contact">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; font-weight: 600; letter-spacing: -0.02em; text-align: center; margin-bottom: 1rem;">Get in Touch</h2>
+            <p style="text-align: center; color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Ready to start? Let's discuss your goals and create a plan for success.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1000px; margin: 0 auto;">
+                <!-- Contact Info -->
+                <div>
+                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem;">Contact Details</h3>
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="font-weight: 600; margin-bottom: 0.5rem;">Email</p>
+                        <p style="color: var(--text-secondary);"><a href="mailto:steffdjones@gmail.com" style="color: var(--text-primary); text-decoration: none;">steffdjones@gmail.com</a></p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="font-weight: 600; margin-bottom: 0.5rem;">WhatsApp</p>
+                        <p style="color: var(--text-secondary);">+44 7XXX XXXXXX</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">(Click the green button below)</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <p style="font-weight: 600; margin-bottom: 0.5rem;">Location</p>
+                        <p style="color: var(--text-secondary);">Neath, Wales</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">In-person tutoring available within 45 miles</p>
+                    </div>
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--bg-white); border-left: 3px solid var(--text-primary);">
+                        <p style="font-weight: 600; margin-bottom: 0.5rem;">Free Consultation</p>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Book a free 15-minute consultation to discuss your needs and see if we're a good fit.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form" style="margin: 0; max-width: none;">
+                    <h3>Quick Contact Form</h3>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Interested In *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="Academic Tutoring">Academic Tutoring</option>
+                                <option value="University Guidance">University Guidance</option>
+                                <option value="Both">Both Services</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your goals and how I can help..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p class="copyright">© 2025 Steffan Jones. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/payments.html">Payments</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/447XXXXXXXXX?text=Hi%20Steffan%2C%20I'm%20interested%20in%20your%20tutoring%20services" class="whatsapp-button" target="_blank" aria-label="Contact via WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-4.713 1.262 1.262-4.669-0.292-0.508c-1.207-2.100-1.847-4.507-1.847-6.983 0-7.51 6.11-13.62 13.62-13.62s13.62 6.11 13.62 13.62-6.11 13.62-13.62 13.62zM21.305 19.26c-0.346-0.174-2.049-1.007-2.366-1.123-0.316-0.116-0.547-0.174-0.776 0.174s-0.893 1.123-1.094 1.347c-0.201 0.227-0.402 0.254-0.748 0.080s-1.457-0.537-2.774-1.711c-1.025-0.913-1.717-2.041-1.918-2.387s-0.022-0.534 0.152-0.707c0.156-0.155 0.346-0.402 0.518-0.603s0.231-0.347 0.346-0.577c0.116-0.231 0.058-0.433-0.028-0.607s-0.776-1.87-1.063-2.565c-0.280-0.672-0.56-0.58-0.776-0.591-0.201-0.010-0.431-0.012-0.661-0.012s-0.603 0.085-0.920 0.431c-0.316 0.346-1.206 1.179-1.206 2.873s1.235 3.333 1.406 3.561c0.174 0.231 2.4 3.965 5.943 5.437 3.543 1.472 3.543 0.981 4.181 0.919s2.049-0.837 2.33

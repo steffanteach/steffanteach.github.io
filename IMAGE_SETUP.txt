@@ -1,0 +1,17 @@
+PROFILE IMAGE SETUP
+==================
+
+✅ Your graduation photo has been saved to: assets/profile.jpg
+
+This image will automatically display in the hero section of your homepage when you upload your website.
+
+The photo shows:
+- You in Harvard graduation robes
+- With your dog (great personal touch!)
+- Professional yet approachable
+
+This is perfect for building trust with potential students and parents.
+
+NO FURTHER ACTION NEEDED - just upload the entire folder structure including the assets/ directory.
+
+File path: assets/profile.jpg

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Tutoring | Steffan Jones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --border-color: #e5e5e5;
+            --bg-white: #ffffff;
+            --bg-off-white: #fafafa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='blur'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='2'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23blur)' opacity='0.04'%3E%3Cpath d='M 20 80 Q 60 60, 100 80 Q 140 100, 180 80 Q 220 60, 260 80 Q 300 100, 340 80' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 0 200 Q 40 180, 80 200 Q 120 220, 160 200 Q 200 180, 240 200 Q 280 220, 320 200 Q 360 180, 400 200' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 60 320 Q 100 300, 140 320 Q 180 340, 220 320 Q 260 300, 300 320 Q 340 340, 380 320' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 400px 400px;
+        }
+
+        /* Navigation */
+        nav {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .main-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 3rem 0 1.5rem;
+        }
+
+        .main-content p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Subject Grid */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .subject-item {
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-off-white);
+        }
+
+        .subject-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .subject-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Process List */
+        .process-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .process-list li {
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .process-list strong {
+            font-weight: 600;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .process-list span {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Pricing Box */
+        .pricing-box {
+            background: var(--bg-off-white);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .pricing-box h3 {
+            margin-top: 0;
+        }
+
+        .pricing-item {
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pricing-item:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .pricing-label {
+            font-weight: 600;
+        }
+
+        .pricing-rate {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .pricing-note {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--bg-off-white);
+            border-top: 1px solid var(--border-color);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--text-primary);
+            color: var(--bg-white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-left h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/index.html" class="logo">Steffan Jones</a>
+            <ul class="nav-links">
+                <li><a href="/index.html#services">Services</a></li>
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Academic Tutoring</h1>
+        <p class="subtitle">Personalized instruction designed to help you master challenging subjects and achieve measurable academic progress.</p>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="content-grid">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3>Quick Facts</h3>
+                <p>One-on-one sessions tailored to your learning style and goals. Available in English and Welsh.</p>
+                
+                <h3>Who I Work With</h3>
+                <p>All ages and levels—from primary school through A-Levels and beyond. UK-based students.</p>
+
+                <h3>All Subjects</h3>
+                <p>Any subject, any level. Just provide the syllabus or worksheets and I'm ready to help you excel.</p>
+
+                <h3>Session Format</h3>
+                <p><strong>Online:</strong> Video call sessions available to anyone in the UK.</p>
+                <p><strong>In-Person:</strong> Available within 45 miles of Neath, Wales. Travel fees apply based on distance.</p>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <h2>Subjects Offered</h2>
+                <p>With a degree from Harvard in Mechanical Engineering, I offer expert tutoring across any subject at any level. Whether it's primary school maths or A-Level physics, simply provide me with the syllabus or worksheets and I'll help you master the material. My approach focuses on building deep understanding, not just memorization.</p>
+
+                <div class="subject-grid">
+                    <div class="subject-item">
+                        <h4>Mathematics</h4>
+                        <p>All levels: Primary through A-Level, including Further Maths</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>Sciences</h4>
+                        <p>Physics, Chemistry, Biology—any level, any exam board</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>Engineering & Computing</h4>
+                        <p>Programming, Computer Science, Engineering Fundamentals</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>English & Welsh</h4>
+                        <p>Language, Literature, Essay Writing in both languages</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>Humanities</h4>
+                        <p>History, Geography, Religious Studies, Philosophy</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>Any Other Subject</h4>
+                        <p>Share your syllabus and I'll prepare to help you succeed</p>
+                    </div>
+                </div>
+
+                <p style="background: var(--bg-off-white); padding: 1.5rem; border-left: 3px solid var(--text-primary); margin: 2rem 0;"><strong>All Ages Welcome:</strong> Whether you're in primary school, preparing for GCSEs, tackling A-Levels, or need help with university courses, I adapt my teaching to your level and learning style.</p>
+
+                <h3>My Approach</h3>
+                <p>I believe in teaching concepts, not just answers. My goal is to help you develop critical thinking skills and problem-solving strategies that extend beyond any single subject or exam.</p>
+                <p>Each session is tailored to your specific needs, whether you're struggling with a particular concept, preparing for exams, or looking to advance beyond your current curriculum.</p>
+
+                <ul class="process-list">
+                    <li>
+                        <strong>01. Assessment</strong>
+                        <span>We start by identifying your current level, learning style, and specific goals.</span>
+                    </li>
+                    <li>
+                        <strong>02. Custom Plan</strong>
+                        <span>I create a personalized learning plan targeting your areas of need.</span>
+                    </li>
+                    <li>
+                        <strong>03. Active Learning</strong>
+                        <span>Sessions focus on hands-on problem solving and conceptual understanding.</span>
+                    </li>
+                    <li>
+                        <strong>04. Progress Tracking</strong>
+                        <span>Regular check-ins ensure we're meeting your goals and adjusting as needed.</span>
+                    </li>
+                </ul>
+
+                <div class="pricing-box">
+                    <h3>Pricing</h3>
+                    <div class="pricing-item">
+                        <div>
+                            <div class="pricing-label">Single Session (1 hour)</div>
+                        </div>
+                        <div class="pricing-rate">£40</div>
+                    </div>
+                    <div class="pricing-item">
+                        <div>
+                            <div class="pricing-label">Package of 5 Sessions</div>
+                        </div>
+                        <div class="pricing-rate">£180</div>
+                    </div>
+                    <div class="pricing-item">
+                        <div>
+                            <div class="pricing-label">Package of 10 Sessions</div>
+                        </div>
+                        <div class="pricing-rate">£340</div>
+                    </div>
+                    <p class="pricing-note">All sessions are 60 minutes. Packages must be used within 3 months of purchase. <strong>Referral Discount:</strong> When someone books a session using your name, you both receive 15% off your next session.</p>
+                </div>
+
+                <h3>In-Person Tutoring</h3>
+                <p>Available within 45 miles of Neath, Wales. A small travel fee applies based on distance:</p>
+                
+                <div style="background: var(--bg-off-white); border: 1px solid var(--border-color); padding: 2rem; margin: 2rem 0;">
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border-color);">
+                            <span><strong>0-5 miles</strong> (Neath local area)</span>
+                            <span style="font-weight: 600;">No charge</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border-color);">
+                            <span><strong>5-15 miles</strong> (Swansea, Port Talbot)</span>
+                            <span style="font-weight: 600;">+£5</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--border-color);">
+                            <span><strong>15-30 miles</strong> (Bridgend, Llanelli)</span>
+                            <span style="font-weight: 600;">+£10</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.75rem 0;">
+                            <span><strong>30-45 miles</strong> (Cardiff area)</span>
+                            <span style="font-weight: 600;">+£15</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">Travel fees are per session. Not sure about your distance? Email me your postcode and I'll let you know!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Let's schedule a free 15-minute consultation to discuss your goals and how I can help you achieve them.</p>
+            <a href="/index.html#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3 style="margin-bottom: 1rem;">Steffan Jones</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Academic tutoring and university guidance.</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">steffdjones@gmail.com</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/tutoring.html">Tutoring</a></li>
+                <li><a href="/college.html">University Guidance</a></li>
+                <li><a href="/payments.html">Payments</a></li>
+            </ul>
+        </div>
+        <div style="max-width: 1100px; margin: 2rem auto 0; padding: 2rem 2rem 0; border-top: 1px solid var(--border-color); text-align: center;"

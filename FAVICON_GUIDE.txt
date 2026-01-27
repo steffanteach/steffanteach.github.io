@@ -1,0 +1,29 @@
+FAVICON CREATION GUIDE
+=====================
+
+Option 1: Use a Free Online Tool
+---------------------------------
+1. Go to https://favicon.io/
+2. Choose "Text" and enter "SJ" (your initials)
+3. Select a simple font and black/white colors
+4. Download the favicon
+5. Rename to favicon.png
+6. Place in assets/ folder
+
+Option 2: Use Canva (Free)
+---------------------------
+1. Go to canva.com
+2. Create 512x512px design
+3. Add text "SJ" or your initials
+4. Download as PNG
+5. Rename to favicon.png
+6. Place in assets/ folder
+
+Option 3: Use Your Profile Photo
+---------------------------------
+1. Crop profile photo to square
+2. Resize to 512x512px
+3. Save as favicon.png
+4. Place in assets/ folder
+
+Quick & Simple: Just use "SJ" initials on white background!

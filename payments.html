@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments & Booking | Steffan Jones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --border-color: #e5e5e5;
+            --bg-white: #ffffff;
+            --bg-off-white: #fafafa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='blur'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='2'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23blur)' opacity='0.04'%3E%3Cpath d='M 20 80 Q 60 60, 100 80 Q 140 100, 180 80 Q 220 60, 260 80 Q 300 100, 340 80' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 0 200 Q 40 180, 80 200 Q 120 220, 160 200 Q 200 180, 240 200 Q 280 220, 320 200 Q 360 180, 400 200' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 60 320 Q 100 300, 140 320 Q 180 340, 220 320 Q 260 300, 300 320 Q 340 340, 380 320' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 400px 400px;
+        }
+
+        nav {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .page-header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem 3rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box {
+            background: var(--bg-off-white);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .info-box h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box p {
+            margin-bottom: 1rem;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .payment-method {
+            text-align: center;
+            padding: 2rem 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .payment-method h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-method p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .steps-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .steps-list li {
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-color);
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 2rem;
+        }
+
+        .steps-list li:first-child {
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .step-content h4 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .cta-box {
+            background: var(--text-primary);
+            color: var(--bg-white);
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-box h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--bg-white);
+            color: var(--text-primary);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+
+        .policies {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--bg-off-white);
+            border: 1px solid var(--border-color);
+        }
+
+        .policies h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .policies h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .policies p {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-left h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-list li {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/index.html" class="logo">Steffan Jones</a>
+            <ul class="nav-links">
+                <li><a href="/index.html#services">Services</a></li>
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Payments & Booking</h1>
+        <p class="subtitle">Simple, secure payment options and an easy booking process to get started.</p>
+    </section>
+
+    <section class="content-section">
+        <h2>How to Book</h2>
+        <p>Getting started is straightforward. Follow these simple steps to schedule your first session.</p>
+
+        <ul class="steps-list">
+            <li>
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h4>Get in Touch</h4>
+                    <p>Email me at steffdjones@gmail.com with your needs, goals, and availability. We'll schedule a free 15-minute consultation to discuss how I can help.</p>
+                </div>
+            </li>
+            <li>
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h4>Choose Your Service</h4>
+                    <p>Decide whether you need academic tutoring, university guidance, or both. We'll create a customized plan based on your specific requirements.</p>
+                </div>
+            </li>
+            <li>
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h4>Make Payment</h4>
+                    <p>Secure your booking with payment via bank transfer, PayPal, or card payment. You'll receive confirmation and scheduling details immediately.</p>
+                </div>
+            </li>
+            <li>
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <h4>Start Learning</h4>
+                    <p>Show up prepared for your first session. All materials and resources will be provided as needed.</p>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Payment Methods</h2>
+        <p>I accept multiple payment options for your convenience:</p>
+
+        <div class="payment-methods">
+            <div class="payment-method">
+                <h4>Bank Transfer</h4>
+                <p>Direct transfer to UK bank account</p>
+            </div>
+            <div class="payment-method">
+                <h4>PayPal</h4>
+                <p>Secure online payment</p>
+            </div>
+            <div class="payment-method">
+                <h4>Card Payment</h4>
+                <p>Debit or credit card accepted</p>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Payment Information</h3>
+            <p><strong>Payment is due before the first session.</strong> For package purchases (5 or 10 sessions), full payment is required upfront with a discount applied.</p>
+            <p>All prices are in British Pounds (£). For international students, currency conversion will be handled at the current exchange rate.</p>
+            <p>Invoices and receipts are provided for all transactions upon request.</p>
+        </div>
+
+        <div class="cta-box">
+            <h3>Ready to Get Started?</h3>
+            <p>Let's discuss your goals and create a personalized plan.</p>
+            <a href="mailto:steffdjones@gmail.com" class="cta-button">Email Me</a>
+        </div>
+
+        <div class="policies">
+            <h3>Policies</h3>
+            
+            <h4>Referral Discount</h4>
+            <p><strong>Save 15% and help others!</strong> When you refer someone and they book a session mentioning your name, you both receive 15% off your next session or package. There's no limit to how many referrals you can make.</p>
+            
+            <h4>In-Person vs Online Sessions</h4>
+            <p><strong>Online:</strong> Available to all UK students. No travel fees.</p>
+            <p><strong>In-Person:</strong> Available within 45 miles of Neath. Travel fees: £0 (0-5mi), £5 (5-15mi), £10 (15-30mi), £15 (30-45mi). To book in-person, email your postcode and I'll confirm your travel fee.</p>
+            
+            <h4>Cancellation Policy</h4>
+            <p>Sessions can be cancelled or rescheduled with at least 24 hours notice at no charge. Cancellations with less than 24 hours notice will forfeit that session.</p>
+            
+            <h4>Refund Policy</h4>
+            <p>Single sessions are non-refundable once booked. For packages, unused sessions may be refunded within the first month of purchase, minus any sessions already completed.</p>
+            
+            <h4>Package Expiration</h4>
+            <p>Session packages (5 or 10 sessions) must be used within 3 months of purchase. Extensions may be granted in exceptional circumstances.</p>
+            
+            <h4>Session Format</h4>
+            <p><strong>Online Sessions:</strong> Conducted via video call (Zoom, Google Meet, etc.). Available to students across the UK.</p>
+            <p><strong>In-Person Sessions:</strong> Available within 45 miles of Neath, Wales. Travel fees apply: 0-5 miles (free), 5-15 miles (+£5), 15-30 miles (+£10), 30-45 miles (+£15). Sessions typically held at your home, local library, or another agreed location.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3 style="margin-bottom: 1rem;">Steffan Jones</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Academic tutoring and university guidance.</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">steffdjones@gmail.com</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/tutoring.html">Tutoring</a></li>
+                <li><a href="/college.html">University Guidance</a></li>
+                <li><a href="/payments.html">Payments</a></li>
+    

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Guidance | Steffan Jones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --border-color: #e5e5e5;
+            --bg-white: #ffffff;
+            --bg-off-white: #fafafa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-white);
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='blur'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='2'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23blur)' opacity='0.04'%3E%3Cpath d='M 20 80 Q 60 60, 100 80 Q 140 100, 180 80 Q 220 60, 260 80 Q 300 100, 340 80' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 0 200 Q 40 180, 80 200 Q 120 220, 160 200 Q 200 180, 240 200 Q 280 220, 320 200 Q 360 180, 400 200' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3Cpath d='M 60 320 Q 100 300, 140 320 Q 180 340, 220 320 Q 260 300, 300 320 Q 340 340, 380 320' stroke='%23000000' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 400px 400px;
+        }
+
+        nav {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .page-header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        .content-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .main-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 3rem 0 1.5rem;
+        }
+
+        .main-content p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-off-white);
+        }
+
+        .service-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .timeline-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .timeline-list li {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2rem;
+        }
+
+        .timeline-list li:first-child {
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .timeline-content h4 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 3rem;
+            background: var(--bg-off-white);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .package-box {
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-white);
+        }
+
+        .package-box h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .package-price {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-features li {
+            padding: 0.75rem 0;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .package-features li:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .cta-section {
+            background: var(--bg-off-white);
+            border-top: 1px solid var(--border-color);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--text-primary);
+            color: var(--bg-white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-left h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .service-cards,
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .timeline-list li {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/index.html" class="logo">Steffan Jones</a>
+            <ul class="nav-links">
+                <li><a href="/index.html#services">Services</a></li>
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>University Guidance</h1>
+        <p class="subtitle">Strategic support through every stage of the university application process—from school selection to acceptance.</p>
+    </section>
+
+    <section class="content-section">
+        <div class="content-grid">
+            <div class="sidebar">
+                <h3>My Experience</h3>
+                <p>As a Harvard graduate who navigated the competitive admissions process, I understand what it takes to create a standout application.</p>
+                
+                <h3>Who I Work With</h3>
+                <p>Students applying to UK universities (including Oxbridge), US universities (including Ivy League), and international programs.</p>
+
+                <h3>Languages</h3>
+                <p>All guidance available in English or Welsh to best support your needs.</p>
+            </div>
+
+            <div class="main-content">
+                <h2>What I Offer</h2>
+                <p>The university application process can be overwhelming. I provide personalized guidance to help you present your strongest application, from choosing the right schools to hitting submit with confidence.</p>
+
+                <div class="service-cards">
+                    <div class="service-card">
+                        <h4>School Selection</h4>
+                        <p>Identify universities that match your academic profile, interests, and goals—reach, target, and safety schools.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Application Strategy</h4>
+                        <p>Develop a cohesive application narrative that showcases your unique strengths and experiences.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Personal Statements</h4>
+                        <p>Craft compelling essays that authentically represent who you are and what you'll bring to campus.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Interview Preparation</h4>
+                        <p>Practice sessions and feedback to help you present yourself confidently in admissions interviews.</p>
+                    </div>
+                </div>
+
+                <h3>Application Timeline</h3>
+                <p>Success in university admissions requires careful planning. Here's a typical timeline for UK applications:</p>
+
+                <ul class="timeline-list">
+                    <li>
+                        <div class="timeline-date">Year 12 Summer</div>
+                        <div class="timeline-content">
+                            <h4>Research & Planning</h4>
+                            <p>Begin researching universities, attend open days, identify potential courses and start thinking about your personal statement.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-date">Sept - Oct</div>
+                        <div class="timeline-content">
+                            <h4>Application Preparation</h4>
+                            <p>Draft personal statement, gather references, complete UCAS form. Oxbridge applicants must submit by mid-October.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-date">Nov - Dec</div>
+                        <div class="timeline-content">
+                            <h4>Final Submissions</h4>
+                            <p>Standard UCAS deadline in mid-January. Oxbridge interviews typically held in December.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-date">Jan - March</div>
+                        <div class="timeline-content">
+                            <h4>Interviews & Offers</h4>
+                            <p>University interviews for competitive courses. Begin receiving offers and making decisions.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-date">May - August</div>
+                        <div class="timeline-content">
+                            <h4>Final Decisions</h4>
+                            <p>Confirm choices, take final exams, receive final offers, and prepare for university life.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">Harvard</span>
+                        <span class="stat-label">Admissions Interviewer</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">MIT</span>
+                        <span class="stat-label">Interview Prep</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Oxford</span>
+                        <span class="stat-label">Interview Guidance</span>
+                    </div>
+                </div>
+
+                <h3>Pricing</h3>
+                <p>Flexible, pay-as-you-go support with optional add-ons for comprehensive guidance.</p>
+
+                <div class="pricing-box" style="background: var(--bg-white); border: 1px solid var(--border-color); padding: 2.5rem; margin: 2rem 0;">
+                    <h4 style="font-size: 1.3rem; margin-bottom: 1.5rem;">Base Rate</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                        <div>
+                            <div style="font-weight: 600; font-size: 1.1rem;">Hourly Consultation</div>
+                            <p style="font-size: 0.9rem; margin: 0; color: var(--text-secondary);">Application strategy, essay review, interview prep, general guidance</p>
+                        </div>
+                        <div style="font-size: 1.8rem; font-weight: 600;">£50/hr</div>
+                    </div>
+                </div>
+
+                <h4 style="font-size: 1.2rem; margin: 2rem 0 1rem;">Optional Add-Ons</h4>
+                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Enhance your support with these premium services:</p>
+
+                <div class="package-grid">
+                    <div class="package-box">
+                        <h4>24/7 Text Support</h4>
+                        <div class="package-price">+£100/month</div>
+                        <ul class="package-features">
+                            <li>Unlimited text/WhatsApp access</li>
+                            <li>Quick responses to urgent questions</li>
+                            <li>Peace of mind throughout the process</li>
+                            <li>Can be added or removed monthly</li>
+                        </ul>
+                    </div>
+                    <div class="package-box">
+                        <h4>Personalised School Search</h4>
+                        <div class="package-price">+£150</div>
+                        <ul class="package-features">
+                            <li>Deep dive into your profile and goals</li>
+                            <li>Custom list of 10-15 target universities</li>
+                            <li>Detailed pros/cons for each school</li>
+                            <li>Strategic reach/target/safety breakdown</li>
+                        </ul>
+                    </div>
+                    <div class="package-box">
+                        <h4>Student-Athlete Support</h4>
+                        <div class="package-price">+£200</div>
+                        <ul class="package-features">
+                            <li>NCAA eligibility guidance</li>
+                            <li>Athletic recruitment strategy</li>
+                            <li>Coach communication templates</li>
+                            <li>Balancing academics and athletics</li>
+                        </ul>
+                    </div>
+                    <div class="package-box">
+                        <h4>Comprehensive Package</h4>
+                        <div class="package-price">£800</div>
+                        <ul class="package-features">
+                            <li>10 hours of consultation</li>
+                            <li>Personalised school search included</li>
+                            <li>Unlimited essay revisions</li>
+                            <li>Application timeline management</li>
+                            <li>Save £300 vs hourly rate</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-off-white); padding: 1.5rem; border-left: 3px solid var(--text-primary); margin: 2rem 0;">
+                    <p style="margin: 0;"><strong>Referral Discount:</strong> When someone books using your name, you both receive 15% off your next session or package. Share your success and save!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Let's Build Your Future</h2>
+            <p>Schedule a free consultation to discuss your university goals and create a plan to get you there.</p>
+            <a href="/index.html#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3 style="margin-bottom: 1rem;">Steffan Jones</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Academic tutoring and university guidance.</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dcafa8b9babab8b6b3b2b9af9cbbb1bdb5b0f2bfb3b1">[email&#160;protected]</a></p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/tutoring.html">Tutoring</a></li>
+                <li><a href="/college.html">University Guidance</a></li>
+                <li><a href="/payments.html">Payments</a></li>
+            </ul>
+        </div>
+        <div style="m
